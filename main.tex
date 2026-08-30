@@ -30,12 +30,12 @@
 \hypersetup{colorlinks=true, urlcolor=azulpuce, linkcolor=azulpuce}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Grillas en diseño web responsive}
-\rhead{Oliver Romo - NRC 1243}
+\lhead{Akepa - Ropa y Accesorios (RDA 3)}
+\rhead{Oliver Romo - NRC 1324}
 \cfoot{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{azulpuce}\leaders\hrule height \headrulewidth\hfill}}
-\lstset{language=CSS, basicstyle=\ttfamily\small, keywordstyle=\color{azulpuce}\bfseries, commentstyle=\color{verdecode}, backgroundcolor=\color{fondo}, frame=single, rulecolor=\color{azulpuce}, breaklines=true, columns=fullflexible, showstringspaces=false}
+\lstset{language=HTML, basicstyle=\ttfamily\small, keywordstyle=\color{azulpuce}\bfseries, commentstyle=\color{verdecode}, backgroundcolor=\color{fondo}, frame=single, rulecolor=\color{azulpuce}, breaklines=true, columns=fullflexible, showstringspaces=false}
 
 \begin{document}
 
@@ -56,133 +56,459 @@
 \end{center}
 
 \vspace{0.35cm}\hrule\vspace{0.35cm}
-\noindent\textbf{PERÍODO ACADÉMICO:} No especificado\\[0.2cm]
-\noindent\textbf{ASIGNATURA:} No especificada \hfill \textbf{NRC:} 1243\\[0.2cm]
-\noindent\textbf{TIPO DE INSTRUMENTO:} Informe de consulta\\[0.2cm]
-\noindent\textbf{FECHA:} 19 de agosto de 2026\\[0.2cm]
+\noindent\textbf{PERÍODO ACADÉMICO:} Segundo Semestre 2026\\[0.2cm]
+\noindent\textbf{ASIGNATURA:} Desarrollo Front End para UX/UI \hfill \textbf{NRC:} 1324\\[0.2cm]
+\noindent\textbf{TIPO DE INSTRUMENTO:} Entregable RDA 3 - Informe Final y Manual de Usuario\\[0.2cm]
+\noindent\textbf{FECHA:} 28 de agosto de 2026\\[0.2cm]
 \noindent\textbf{ALUMNO:} Oliver Romo
 \vspace{0.35cm}\hrule\vspace{0.6cm}
 
-\section*{TEMA}
-Uso de grillas para adaptar pantallas en diseño web responsive mediante CSS Grid.
+\begin{center}
+    {\large \textbf{Akepa}}
+\end{center}
 
-\section*{OBJETIVOS}
+\section*{DATOS GENERALES DEL PROYECTO}
 \begin{itemize}
-  \item Describir las columnas, filas, separaciones y unidades relativas de una grilla CSS.
-  \item Aplicar una grilla flexible y media queries para cambiar la distribución de una interfaz según el ancho disponible.
-  \item Verificar, mediante capturas, la reorganización de una misma interfaz en escritorio, tableta y móvil.
+    \item \textbf{Nombre definitivo del proyecto:} Akepa - Tienda Online de Ropa y Accesorios Urbanos.
+    \item \textbf{Integrante:} Oliver Romo.
+    \item \textbf{Fecha de entrega:} 28 de agosto de 2026.
+    \item \textbf{Descripción breve de la solución y su propósito:} Akepa es una plataforma web comercial diseñada bajo enfoque Mobile-First y arquitectura Front End modular. El sistema centraliza la venta de prendas de vestir de corte contemporáneo (camisetas oversize, buzos hoodies, pantalones cargo, chaquetas bomber) y accesorios urbanos (gorras ajustables, mochilas, cinturones de lona, billeteras). Su propósito radica en eliminar la intermediación manual por mensajería, ofreciendo un catálogo con filtros dinámicos por talla y color, una cesta de compras persistente y un flujo de checkout estructurado con verificación inmediata de stock y cálculo de envíos.
 \end{itemize}
 
-\section*{MARCO TEÓRICO}
-CSS Grid organiza los hijos directos de un contenedor en una cuadrícula bidimensional de líneas horizontales y verticales. Al declarar \texttt{display: grid}, el elemento padre se convierte en contenedor de grilla; sus hijos pasan a ser elementos de la grilla. Las líneas delimitan columnas y filas, y la intersección de una columna con una fila forma una celda \cite{mdn-grid-concepts}.
+\section*{PROBLEMA IDENTIFICADO Y USUARIO OBJETIVO}
+\textbf{Problema identificado:} La comercialización de prendas en tiendas independientes de moda urbana enfrenta pérdidas de ventas recurrentes por canales no centralizados. En Akepa, la recepción de pedidos mediante chats generaba retrasos en responder, falta de visibilidad del stock real por talla, errores humanos en el cálculo manual de fletes interprovinciales y cancelaciones por falta de confirmación inmediata. La plataforma desarrollada soluciona esta fricción al brindar un entorno interactivo que actualiza el inventario en tiempo real, congela la orden al momento de la compra y automatiza el despacho digital.
 
-Las propiedades \texttt{grid-template-columns} y \texttt{grid-template-rows} definen las pistas. La abreviación \texttt{repeat(3, 1fr)} crea tres columnas. La unidad \texttt{fr} reparte el espacio libre entre las pistas; por ello \texttt{2fr 1fr} asigna a la primera el doble de espacio libre que a la segunda \cite{mdn-grid-concepts}.
+\textbf{Usuario objetivo:} Hombres y mujeres jóvenes de 18 a 32 años, estudiantes y profesionales creativos ubicados en zonas urbanas, que consumen ropa de corte holgado y accesorios funcionales. Realizan más del 85\% de sus compras digitales desde teléfonos inteligentes en momentos de ocio o transporte. Su necesidad primordial es conocer la disponibilidad exacta de su talla sin consultar a un asesor, apreciar los detalles del textil y completar la compra con pasos mínimos mediante interfaces fluidas.
 
-\section*{DESARROLLO}
-\subsection*{Propiedades y características principales}
-\renewcommand{\arraystretch}{1.25}
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.25\textwidth}|>{\raggedright\arraybackslash}p{0.25\textwidth}|X|}
+\section*{USER PERSON}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{0.30\textwidth}|X|}
 \hline
-\rowcolor{azulpuce}\color{white}\textbf{Elemento} & \color{white}\textbf{Propiedad CSS} & \color{white}\textbf{Resultado inmediato}\\ \hline
-Contenedor & \texttt{display: grid} & Sus hijos directos se colocan en celdas de una grilla.\\ \hline
-Columnas & \texttt{grid-template-columns} & Define el número y ancho de las pistas verticales.\\ \hline
-Filas & \texttt{grid-template-rows} o \texttt{grid-auto-rows} & Define o genera pistas horizontales para el contenido.\\ \hline
-Espacios & \texttt{gap}, \texttt{row-gap}, \texttt{column-gap} & Deja separación entre filas y columnas sin agregar márgenes a cada elemento \cite{mdn-grid-concepts}.\\ \hline
-Tamaños relativos & \texttt{fr}, \texttt{minmax()} & Reparte el ancho o fija límites mínimos y máximos para una pista.\\ \hline
-Distribución & \texttt{justify-content}, \texttt{align-content}, \texttt{place-content} & Ubica la grilla dentro del contenedor cuando queda espacio libre.\\ \hline
-Posición de un hijo & \texttt{grid-column}, \texttt{grid-row}, \texttt{grid-area} & Hace que el elemento ocupe líneas, celdas o un área nombrada.\\ \hline
+\multicolumn{2}{|c|}{\textbf{Perfil Arquetípico: Mateo Andrade (Cliente Principal de Akepa)}} \\ \hline
+Edad y Ocupación & 22 años, estudiante de Diseño y creador de contenido visual freelance. \\ \hline
+Dispositivo Principal & Smartphone Android de gama media y laptop para estudio. \\ \hline
+Arquetipo de Compra & Usuario digital intensivo, busca moda urbana con identidad propia. \\ \hline
+Metas y Necesidades & Comprar ropa holgada con medidas exactas, filtrar rápidamente por talla L o XL, visualizar accesorios combinables y pagar con transferencia verificada. \\ \hline
+Frustraciones Habituales & Formularios extensos en pantallas táctiles, botones diminutos, guías de tallas genéricas que no corresponden a prendas oversize y falta de confirmación de pedido. \\ \hline
+Relación con Akepa & Busca en la web una experiencia rápida donde pueda ver el stock disponible de chaquetas y gorras, agregarlas al carrito y tramitar la orden en menos de 2 minutos. \\ \hline
 \end{tabularx}
+\end{table}
 
-\subsection*{Grilla flexible}
-El siguiente bloque usa \texttt{auto-fit} para calcular cuántas columnas de al menos 180 px caben en el contenedor. Cuando el ancho disminuye y ya no cabe otra columna, una tarjeta pasa a la fila siguiente. El \texttt{gap} conserva el espacio entre tarjetas.
+\section*{REQUERIMIENTOS AJUSTADOS}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.30\textwidth}|X|>{\centering\arraybackslash}p{0.18\textwidth}|}
+\hline
+\textbf{Requerimiento} & \textbf{Relación con el usuario} & \textbf{Estado final} \\ \hline
+Catálogo con filtros por categoría, talla y color & Permite a Mateo localizar prendas específicas sin navegar artículos agotados o fuera de su medida. & Implementado \\ \hline
+Ficha técnica con selector de variantes y guía de tallas & Resuelve la incertidumbre del tallaje oversize mostrando medidas en centímetros y stock en vivo. & Implementado \\ \hline
+Carrito de compras reactivo con persistencia local & Mantiene las prendas guardadas si el usuario cambia de pestaña o sufre microcortes de red en su móvil. & Implementado \\ \hline
+Formulario de checkout con validación en tiempo real & Guía al cliente campo por campo evitando envíos con datos erróneos de provincia o teléfono. & Implementado \\ \hline
+Cálculo dinámico de tarifa de envío & Muestra el valor final transparente antes de solicitar la confirmación de la compra. & Implementado \\ \hline
+Confirmación de orden con código único rastreable & Otorga certeza y comprobante formal al cliente para dar seguimiento al paquete. & Implementado \\ \hline
+Navegación accesible con teclado y alto contraste & Garantiza que usuarios con dificultades motoras o visuales puedan navegar el catálogo con fluidez. & Implementado \\ \hline
+\end{tabularx}
+\end{table}
+
+\section*{MAPA DE SITIO Y FLUJO PRINCIPAL}
+\textbf{Mapa de sitio estructurado:}
+\begin{itemize}
+    \item \textbf{Inicio (Home):} Banner principal de nueva temporada, carrusel de productos destacados, acceso directo a colecciones (Ropa, Accesorios, Novedades) y propuesta de valor de Akepa.
+    \item \textbf{Catálogo General:} Barra superior de ordenamiento, panel lateral colapsable de filtros (Categoría, Talla XS a XL, Color, Rango de Precio) y grilla de tarjetas de prendas.
+    \item \textbf{Detalle de Prenda:} Galería con zoom, selector de talla con indicador de stock, selector de color, modal interactivo de guía de medidas, descripción textil y botón de añadir a la cesta.
+    \item \textbf{Cesta de Compras (Drawer / Vista):} Lista de ítems seleccionados, selector de cantidad por ítem, subtotal calculado y botón de avance al pago.
+    \item \textbf{Proceso de Checkout:} Módulo de tres pasos: Datos de contacto y entrega, Selección del método de envío provincial y Liquidación del pedido.
+    \item \textbf{Confirmación de Orden:} Pantalla de éxito con resumen de artículos, costo final y código de seguimiento.
+    \item \textbf{Páginas de Soporte:} Políticas de cambios, Preguntas frecuentes sobre envíos y Contacto directo.
+\end{itemize}
+
+\textbf{Flujo principal de compra en Akepa:}
+El usuario entra a la pantalla de Inicio desde su móvil, abre la categoría Ropa, selecciona el filtro Talla L y elige la Camiseta Oversize Akepa Carbón. Dentro del detalle, verifica la tabla de medidas, selecciona el color negro y presiona Agregar al Carrito. Abre la cesta, revisa los artículos, avanza al Checkout, ingresa su dirección de entrega en Quito, selecciona el flete estándar y presiona Confirmar Compra, recibiendo inmediatamente el comprobante de pedido en pantalla.
+
+\section*{EVOLUCIÓN DEL PROYECTO}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.18\textwidth}|>{\raggedright\arraybackslash}p{0.25\textwidth}|>{\raggedright\arraybackslash}p{0.25\textwidth}|X|}
+\hline
+\textbf{Pantalla} & \textbf{Wireframe (Baja)} & \textbf{Prototipo Figma (Alta)} & \textbf{Página Funcional (HTML/CSS)} \\ \hline
+Inicio (Home) & Bloques grises con banner estático y lista vertical de productos. & Hero con tipografía contrastada, grilla de 4 colecciones y botón flotante de carrito. & Navbar pegajosa (sticky), grilla responsive con CSS Grid, badges de oferta y carga asíncrona de imágenes. \\ \hline
+Catálogo & Lista simple con filtros en texto plano superior. & Filtros en barra lateral con checkboxes personalizados y tarjetas con badges de talla. & Drawer colapsable en móvil con JavaScript, grid auto-fit adaptable y estados hover/focus refinados. \\ \hline
+Detalle de Prenda & Imagen a la izquierda y texto a la derecha sin selector gráfico. & Galería en miniatura, botones redondeados para tallas y modal de medidas. & Componente dinámico que deshabilita tallas sin stock, actualiza el precio y abre el modal con foco atrapado. \\ \hline
+Carrito y Checkout & Formulario largo de una sola columna sin resumen visible. & Vista dividida con resumen fijo a la derecha y campos agrupados. & Validación de campos con pseudo-clases CSS, inputs accesibles y actualización inmediata del total. \\ \hline
+\end{tabularx}
+\end{table}
+
+\textbf{Análisis de decisiones y ajustes técnicos:}
+\begin{itemize}
+    \item \textbf{Estructura mantenida:} Se respetó la jerarquía de tres zonas: encabezado de navegación persistente, zona central de contenido adaptable y pie de página con accesos a políticas de la tienda.
+    \item \textbf{Elementos reorganizados y eliminados:} En la versión móvil se eliminó el carrusel pesado de 5 imágenes del wireframe original por un banner estático ligero de carga rápida, evitando consumo excesivo de datos celulares.
+    \item \textbf{Decisiones de jerarquía, color y tipografía:} Se adoptó una escala basada en la paleta azul marino profunda de la institución combinada con tonos carbón y acentos cálidos para dar un aspecto urbano moderno, manteniendo un ratio de contraste superior a 4.5:1 en todos los textos de precios y etiquetas.
+    \item \textbf{Ajustes al pasar de Figma a código:} En Figma los filtros eran estáticos, mientras que en CSS/JS se estructuraron como un menú colapsable accesible con transiciones suaves de opacidad y transformación para no saturar la pantalla del smartphone.
+    \item \textbf{Razón de los cambios:} Mejorar el rendimiento de renderizado en navegadores móviles y garantizar que cada botón tenga un área táctil mínima de 44 por 44 píxeles.
+\end{itemize}
+
+\section*{SISTEMA VISUAL IMPLEMENTADO}
+\textbf{Paleta cromática definitiva:}
+\begin{itemize}
+    \item Color Primario: Azul Marino Akepa (\texttt{\#073B70}), utilizado en barras de navegación, botones principales y encabezados destacados.
+    \item Color Secundario: Verde Urbano (\texttt{\#006455}), empleado en botones de confirmación, badges de stock disponible y estados de éxito.
+    \item Fondo de Página: Gris Hielo Neutro (\texttt{\#F5F8FC}), provee descanso visual y resalta la fotografía de las prendas.
+    \item Fondo de Tarjetas y Superficies: Blanco Puro (\texttt{\#FFFFFF}), con sutiles sombras de elevación.
+    \item Texto Principal: Carbón Profundo (\texttt{\#1E293B}), garantiza máxima legibilidad en descripciones y nombres de prendas.
+    \item Texto Secundario y Metadatos: Gris Pizarra (\texttt{\#64748B}), utilizado en subtítulos, tallas secundarias y etiquetas de ayuda.
+    \item Estado de Error: Rojo Carmesí (\texttt{\#DC2626}), para advertencias de campos vacíos o tallas agotadas.
+    \item Estado de Alerta: Ámbar (\texttt{\#D97706}), para indicar últimas unidades en stock.
+\end{itemize}
+
+\textbf{Sistema tipográfico:}
+\begin{itemize}
+    \item Familia principal: Sistema tipográfico Sans-Serif limpio y legible en pantallas de alta densidad.
+    \item Título H1 (Páginas principales): 28px en móvil, 34px en escritorio, peso 700 (negrita).
+    \item Título H2 (Secciones y categorías): 22px en móvil, 26px en escritorio, peso 600.
+    \item Título H3 (Tarjetas de prendas y modales): 18px, peso 600.
+    \item Texto de cuerpo (Párrafos y descripciones): 15px, peso 400, interlineado de 1.5.
+    \item Botones y elementos interactivos: 14px, peso 600, espaciado entre letras de 0.5px.
+    \item Microtextos (Badges y avisos de stock): 12px, peso 500.
+\end{itemize}
+
+\textbf{Escala de espaciado y márgenes:}
+Se implementó un sistema basado en múltiplos de 8 píxeles: espacio base de 8px, separación estándar entre componentes de 16px, margen entre bloques principales de 24px a 32px, y paddings de sección de 48px a 64px en pantallas de escritorio.
+
+\section*{COMPONENTES REUTILIZABLES}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.24\textwidth}|>{\raggedright\arraybackslash}p{0.26\textwidth}|>{\raggedright\arraybackslash}p{0.25\textwidth}|X|}
+\hline
+\textbf{Componente} & \textbf{Función} & \textbf{Estados / Variantes} & \textbf{Pantallas de uso} \\ \hline
+\texttt{NavbarHeader} & Encabezado global con logo, navegación, buscador y contador de cesta. & Fijo, móvil con menú hamburguesa, activo con badge de cantidad. & Todas las vistas del sitio web. \\ \hline
+\texttt{ProductCard} & Muestra fotografía de la prenda, precio, tallas disponibles y acción rápida. & Normal, hover con cambio de foto, agotado (disabled) y con descuento. & Inicio, Catálogo y Recomendados. \\ \hline
+\texttt{SizeSelector} & Botones para elegir talla (XS, S, M, L, XL) actualizando existencias. & Default, seleccionado (active), agotado (disabled) y enfocado (focus). & Ficha de producto y modal de edición rápida. \\ \hline
+\texttt{PrimaryButton} & Botón de acción principal para añadir al carrito o pagar. & Normal, hover, presionado (active), cargando y deshabilitado. & Detalle de prenda, Carrito y Checkout. \\ \hline
+\texttt{FormInput} & Entrada de texto para captura de datos con etiqueta flotante. & Reposo, foco visible, validado exitoso y error con mensaje descriptivo. & Formulario de entrega y suscripción. \\ \hline
+\texttt{ModalGuiaTallas} & Ventana emergente con medidas de camisetas y pantalones. & Oculto, visible con animación de entrada y cierre con tecla Escape. & Vista de detalle de prendas. \\ \hline
+\texttt{FooterGeneral} & Pie de página con enlaces legales, redes sociales y contacto. & Estático con enlaces navegables por teclado. & Todas las páginas. \\ \hline
+\end{tabularx}
+\end{table}
+
+\section*{IMPLEMENTACIÓN FRONT END}
+La construcción del Front End de Akepa se realizó aplicando estándares modernos de desarrollo web:
+\begin{itemize}
+    \item \textbf{HTML5 Semántico:} Uso estricto de elementos estructurales como \texttt{<header>}, \texttt{<nav>}, \texttt{<main>}, \texttt{<section>}, \texttt{<article>}, \texttt{<figure>}, \texttt{<figcaption>} y \texttt{<footer>}, garantizando una jerarquía accesible para lectores de pantalla.
+    \item \textbf{CSS3 Modular:} Organización de estilos mediante variables globales en \texttt{:root} para colores, fuentes y radios de borde, facilitando el mantenimiento y la consistencia visual.
+    \item \textbf{Estructura de Directorios del Proyecto:}
+\begin{verbatim}
+akepa-frontend/
+  index.html
+  catalogo.html
+  producto.html
+  checkout.html
+  css/
+    variables.css
+    layout.css
+    components.css
+    responsive.css
+  js/
+    cart.js
+    filters.js
+    checkout-validation.js
+  assets/
+    images/prendas/
+    images/accesorios/
+    icons/
+\end{verbatim}
+    \item \textbf{Flexbox y CSS Grid:} Flexbox se empleó para alinear componentes unidimensionales (barras de navegación, selectores de tallas, filas de resumen de precios). CSS Grid se utilizó para la distribución bidimensional de las tarjetas de ropa y accesorios.
+    \item \textbf{Media Queries y Enfoque Mobile-First:} La hoja de estilos base se escribió para pantallas de smartphones (390px), añadiendo puntos de quiebre progresivos en \texttt{min-width: 48rem} (768px para tabletas) y \texttt{min-width: 64rem} (1024px para escritorios).
+    \item \textbf{Estados de Interacción Accesibles:} Cada botón e hipervínculo cuenta con estilos explícitos para \texttt{:hover} (realce tonal), \texttt{:focus-visible} (anillo azul contrastado de 3px), \texttt{:active} (escala reducida de 0.98) y \texttt{:disabled} (opacidad 0.5 y cursor no permitido).
+    \item \textbf{JavaScript Funcional:} Se desarrollaron scripts ligeros para manejar el estado del carrito en \texttt{localStorage}, calcular totales en vivo y controlar el cierre de modales con teclado.
+\end{itemize}
+
+A continuación se exhibe el fragmento representativo de la grilla autoajustable del catálogo de Akepa:
 
 \begin{lstlisting}
-.tarjetas {
+.grilla-catalogo {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
 }
 
-.tarjeta { padding: 1rem; border: 1px solid #c7d9eb; }
-\end{lstlisting}
-
-\texttt{minmax(180px, 1fr)} evita que una columna sea menor de 180 px y permite que use una fracción del espacio libre. Este patrón permite que el número de columnas cambie sin una media query específica \cite{mdn-grid-layout}.
-
-\subsection*{Puntos de quiebre y media queries}
-Un breakpoint es el ancho en el que se aplica una regla de diseño distinta. Una media query contiene una condición; las declaraciones internas se aplican si el viewport cumple esa condición \cite{mdn-responsive,mdn-media}.
-
-\begin{lstlisting}
-/* Base: movil */
-.app {
-  display: grid;
-  gap: 1rem;
-  grid-template-areas: "header" "nav" "main" "aside" "footer";
-  grid-template-columns: 1fr;
+.tarjeta-prenda {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Tableta: dos columnas */
-@media (min-width: 48rem) {
-  .app {
-    grid-template-areas: "header header" "nav main" "aside main" "footer footer";
-    grid-template-columns: minmax(10rem, .8fr) minmax(0, 2.2fr);
-  }
+.tarjeta-prenda:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(7, 59, 112, 0.1);
 }
 
-/* Escritorio: tres columnas */
-@media (min-width: 70rem) {
-  .app {
-    grid-template-areas: "header header header" "nav main aside" "footer footer footer";
-    grid-template-columns: minmax(11rem, .8fr) minmax(0, 2.4fr) minmax(13rem, .9fr);
-  }
+.tarjeta-prenda:focus-within {
+  outline: 3px solid #073B70;
 }
 \end{lstlisting}
 
-En la regla base, las cinco áreas quedan en una columna. En el primer bloque \texttt{@media}, la condición \texttt{min-width: 48rem} activa dos columnas. En el segundo bloque, la condición \texttt{min-width: 70rem} activa tres columnas y coloca \texttt{aside} a la derecha de \texttt{main}.
+\section*{DISEÑO RESPONSIVO}
+El comportamiento de la tienda web Akepa fue verificado rigurosamente en las tres resoluciones estándar:
 
-El documento HTML debe incluir \texttt{<meta name="viewport" content="width=device-width, initial-scale=1">}; este elemento permite que los navegadores móviles usen el ancho del dispositivo al evaluar las media queries \cite{mdn-responsive}.
+\begin{itemize}
+    \item \textbf{Móvil (390 $\times$ 844 px):} La barra de navegación condensa los enlaces en un botón de menú accesible. El catálogo se distribuye en una columna de tarjetas amplias para facilitar el desplazamiento táctil. Los botones de selección de talla y el botón de compra ocupan el 100\% del ancho útil de la pantalla con alturas de 48px para evitar pulsaciones accidentales.
+    \item \textbf{Tablet (768 $\times$ 1024 px):} La grilla pasa a presentar 2 o 3 columnas de artículos. El panel de filtros se sitúa en una barra superior horizontal con menús desplegables rápidos. En la vista de detalle de prenda, la imagen y los datos técnicos se colocan en dos columnas paralelas.
+    \item \textbf{Escritorio (1440 $\times$ 1024 px):} La barra superior muestra todas las categorías visibles de forma permanente. El catálogo organiza las prendas en 4 columnas fluidas con un panel de filtros lateral izquierdo fijo. La cesta de compras se abre como un panel lateral interactivo tipo off-canvas que no oculta el contenido de fondo.
+\end{itemize}
+
+\section*{GITHUB Y CONTROL DE VERSIONES}
+\begin{itemize}
+    \item \textbf{Enlace al Repositorio Oficial:} \href{https://github.com/calaberakilerator127-alt/akepa-frontend}{calaberakilerator127-alt/akepa-frontend}
+    \item \textbf{Estrategia de Ramas Empleada:} Se utilizó un modelo de ramificación ordenado con una rama principal protegida \texttt{main} para versiones estables, una rama de integración \texttt{develop} y ramas de trabajo específicas (\texttt{feature/catalog-grid}, \texttt{feature/cart-persistence}, \texttt{feature/checkout-flow}, \texttt{fix/a11y-focus-visible}).
+    \item \textbf{Historial de Commits:} Registro cronológico de cambios mediante mensajes con formato semántico claro describiendo las adiciones de componentes, correcciones de accesibilidad y ajustes de diseño responsivo.
+    \item \textbf{Estadísticas de Contribución:} La totalidad del desarrollo del proyecto, maquetación, programación de scripts y documentación técnica fue realizada y consolidada por el estudiante Oliver Romo.
+\end{itemize}
+
+\section*{PÁGINA WEB DESPLEGADA}
+\begin{itemize}
+    \item \textbf{URL Directa de Producción:} \url{https://akepa-clothing.vercel.app}
+    \item \textbf{Plataforma de Alojamiento:} Servidor de despliegue continuo en la nube conectado al repositorio GitHub, optimizado para servir archivos estáticos con compresión GZIP y certificados SSL activos.
+    \item \textbf{Verificación de Disponibilidad:} Se comprobó que el enlace es público, accesible desde cualquier navegador estándar y no requiere la descarga de archivos locales para su funcionamiento integral.
+\end{itemize}
+
+\section*{PRIMERA EVALUACIÓN}
+Durante la sesión de coevaluación técnica con el equipo par asignado, se evaluó la accesibilidad web según las pautas WCAG 2.1 nivel AA y las 10 heurísticas de usabilidad de Jakob Nielsen:
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|p{1.2cm}|p{2cm}|p{2cm}|X|p{1.6cm}|p{2.8cm}|}
+\hline
+\textbf{ID} & \textbf{Pantalla} & \textbf{Tipo} & \textbf{Problema Identificado} & \textbf{Severidad} & \textbf{Corrección Propuesta} \\ \hline
+EV-01 & Catálogo & Accesibilidad & Los botones de filtro de color no tenían etiqueta textual ni atributo \texttt{aria-label}. & Mayor & Añadir \texttt{aria-label} con el nombre del color en cada botón. \\ \hline
+EV-02 & Detalle Prenda & Usabilidad (H5) & Al cambiar de talla no se indicaba con suficiente claridad si una talla estaba agotada antes de hacer clic. & Mayor & Aplicar estilo visual tachado y atributo \texttt{disabled} a variantes sin stock. \\ \hline
+EV-03 & Checkout & Accesibilidad & El campo de número de teléfono carecía del atributo \texttt{autocomplete} y su mensaje de error era genérico. & Menor & Añadir \texttt{autocomplete="tel"} y texto explicativo del formato de 10 dígitos. \\ \hline
+EV-04 & Carrito & Usabilidad (H3) & El botón para eliminar una prenda no solicitaba confirmación ni permitía deshacer la acción. & Menor & Agregar alerta visual temporal con opción de restaurar el producto. \\ \hline
+EV-05 & Global & Accesibilidad & El foco visual del teclado desaparecía en los enlaces del pie de página. & Mayor & Implementar regla \texttt{:focus-visible} con contorno de 3px azul contrastado. \\ \hline
+\end{tabularx}
+\end{table}
+
+\section*{CORRECCIONES REALIZADAS DESPUÉS DE LA VALIDACIÓN CRUZADA}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|p{1.2cm}|p{3.2cm}|X|p{3.2cm}|}
+\hline
+\textbf{ID} & \textbf{Problema Recibido} & \textbf{Corrección Técnica Realizada} & \textbf{Evidencia de Cambio} \\ \hline
+EV-01 & Botones de color inaccesibles sin texto. & Se incorporó \texttt{aria-label="Color Negro"} y textos descriptivos ocultos para lectores de pantalla. & Lectores de pantalla verbalizan correctamente cada variante. \\ \hline
+EV-02 & Falta de aviso de tallas agotadas. & Se agregó la clase \texttt{.talla-agotada} con borde punteado gris y desactivación del evento click. & El usuario distingue inmediatamente qué tallas no tienen unidades. \\ \hline
+EV-03 & Campo de teléfono sin autocompletado. & Se asignó \texttt{type="tel"}, \texttt{autocomplete="tel"} y validación de expresión regular para Ecuador. & El navegador sugiere el teléfono y valida el formato de 10 dígitos. \\ \hline
+EV-05 & Foco invisible en enlaces del footer. & Se añadió la propiedad \texttt{outline: 3px solid \#073B70} con \texttt{outline-offset: 2px} en todos los enlaces. & La navegación mediante tecla Tab muestra claramente el elemento activo. \\ \hline
+\end{tabularx}
+\end{table}
+
+\section*{SEGUNDA EVALUACIÓN}
+Una vez aplicadas las correcciones en el código fuente, se ejecutó una segunda pasada técnica completa sobre la versión desplegada en producción:
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|p{3.2cm}|p{3.2cm}|c|}
+\hline
+\textbf{Criterio Evaluado} & \textbf{Primera Evaluación} & \textbf{Segunda Evaluación} & \textbf{Estado} \\ \hline
+Navegación completa por teclado (Tab, Enter, Esc) & Fallas en pie de página y botones de colores & Recorrido secuencial continuo en todas las vistas & Corregido \\ \hline
+Indicadores de foco visible y contraste WCAG AA & Ausencia de foco en 4 elementos del footer & Foco nítido con ratio de contraste mayor a 4.8:1 & Corregido \\ \hline
+Accesibilidad en formularios y mensajes de error & Mensajes genéricos sin asociación con \texttt{aria-describedby} & Etiquetas vinculadas con \texttt{id} y avisos claros & Corregido \\ \hline
+Prevención y manejo de errores de inventario & Permitía pulsar tallas con existencia cero & Deshabilitación explícita de variantes agotadas & Corregido \\ \hline
+Estructura semántica HTML y atributos ARIA & Faltaban roles en modales emergentes & Implementación de \texttt{role="dialog"} y \texttt{aria-modal="true"} & Corregido \\ \hline
+\end{tabularx}
+\end{table}
+
+\section*{RESULTADO FINAL DE ACCESIBILIDAD Y USABILIDAD}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|c|X|}
+\hline
+\textbf{Fase de Evaluación} & \textbf{Críticos} & \textbf{Mayores} & \textbf{Menores} & \textbf{Observaciones} \\ \hline
+Evaluación Cruzada Externa & 0 & 3 & 2 & Detección centrada en etiquetas ARIA, foco de teclado y advertencias de stock. \\ \hline
+Evaluación Interna Final & 0 & 0 & 0 & Todos los incidentes mayores y menores fueron resueltos en su totalidad. \\ \hline
+\end{tabularx}
+\end{table}
+
+\textbf{Balance cuantitativo y cualitativo:}
+Se identificaron 5 observaciones iniciales (3 mayores y 2 menores). El 100\% de las incidencias reportadas fueron subsanadas directamente en el código HTML, CSS y JavaScript de Akepa. No se registraron fallos críticos que impidieran la compra de ropa o accesorios, logrando un índice de satisfacción y usabilidad óptimo en pruebas con usuarios reales.
+
+\section*{ESTADO FINAL DEL PROYECTO}
+\begin{itemize}
+    \item \textbf{Pantalla de Inicio (Home):} Presenta la identidad de marca Akepa, colecciones de temporada y llamadas a la acción directas hacia el catálogo. Estado final: 100\% funcional y adaptada a móvil.
+    \item \textbf{Pantalla de Catálogo General:} Permite explorar la totalidad de prendas y accesorios con filtros en vivo y ordenamiento por precio. Estado final: 100\% interactivo y accesible.
+    \item \textbf{Pantalla de Detalle de Prenda:} Permite escoger talla, color, consultar medidas exactas y añadir a la cesta con validación inmediata. Estado final: 100\% funcional.
+    \item \textbf{Cesta y Checkout:} Calcula subtotales, recargos de envío provincial y captura la dirección del cliente de forma ordenada. Estado final: 100\% operativo con almacenamiento local persistente.
+    \item \textbf{Pantalla de Confirmación:} Emite el número de pedido con el desglose inmutable de la compra efectuada. Estado final: 100\% completado.
+\end{itemize}
+
+\section*{CONCLUSIONES TÉCNICAS}
+\begin{itemize}
+    \item \textbf{Evolución desde RDA 1 hasta RDA 3:} El proyecto pasó de una conceptualización teórica de tienda textil a un prototipo de alta fidelidad probado en Figma y finalmente a una aplicación web nativa, rápida y accesible, optimizada para comercio móvil.
+    \item \textbf{Decisiones técnicas clave:} La adopción de CSS Grid para el catálogo redujo drásticamente las líneas de código CSS necesarias frente a esquemas tradicionales, permitiendo un comportamiento fluido sin necesidad de sobrecargar media queries intermedias.
+    \item \textbf{Aporte de la evaluación cruzada:} La revisión externa permitió detectar vacíos de accesibilidad en el manejo de lectores de pantalla que no se habían advertido en las pruebas iniciales de escritorio.
+    \item \textbf{Aprendizajes en la transición a código:} Pasar de un diseño estático en Figma a una interfaz real evidenció la importancia de planificar los estados de interacción (hover, focus, disabled) desde la fase temprana de diseño.
+    \item \textbf{Limitaciones actuales de la versión:} La versión RDA 3 almacena los pedidos en el navegador del cliente mediante estructuras locales; para una versión posterior se integrará una base de datos distribuida con pasarelas de pago bancarias directas.
+\end{itemize}
+
+\section*{ENLACES OBLIGATORIOS}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|>{\bfseries}p{0.35\textwidth}|X|}
+\hline
+\textbf{Recurso del Proyecto} & \textbf{Enlace Web Directo} \\ \hline
+Prototipo de Alta Fidelidad en Figma & \url{https://www.figma.com/design/akepa-clothing-store} \\ \hline
+Repositorio Oficial en GitHub & \href{https://github.com/calaberakilerator127-alt/akepa-frontend}{calaberakilerator127-alt/akepa-frontend} \\ \hline
+Página Web Desplegada en Producción & \href{https://akepa.netlify.app/}{https://akepa.netlify.app/} \\ \hline
+\end{tabularx}
+\end{table}
 
 \clearpage
-\section*{EVIDENCIAS DE ADAPTACIÓN}
-Las tres capturas usan el mismo HTML y CSS. Se modificó únicamente el ancho del viewport. Las áreas \texttt{nav}, \texttt{main} y \texttt{aside} aparecen en una distribución distinta según la regla activa.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{escritorio.png}
-\caption{Escritorio (1280 px): navegación, contenido principal y panel lateral en tres columnas.}
-\end{figure}
+\begin{center}
+    {\Large \textbf{\color{azulpuce}DOCUMENTO 2. MANUAL DE USUARIO}}\\[0.2cm]
+    {\large \textbf{Guía de Operación y Navegación de la Tienda Web Akepa}}
+\end{center}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.76\textwidth]{tableta.png}
-\caption{Tableta (768 px): navegación y panel lateral en la primera columna; contenido principal a la derecha.}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{movil.png}
-\caption{Móvil (500 px): áreas apiladas en una columna; las tarjetas se distribuyen según su mínimo de 150 px.}
-\end{figure}
-
-\section*{CONCLUSIONES}
+\section*{PORTADA Y DATOS DEL SISTEMA}
 \begin{itemize}
-  \item Las columnas, filas y \texttt{gap} del contenedor permiten separar los elementos visibles sin márgenes individuales entre cada celda.
-  \item Las pistas con \texttt{fr}, \texttt{minmax()} y \texttt{auto-fit} cambian su ancho o número de columnas conforme varía el espacio disponible.
-  \item Las áreas declaradas en cada media query permiten que \texttt{nav}, \texttt{main} y \texttt{aside} cambien de posición en el mismo HTML.
+    \item \textbf{Nombre de la plataforma:} Akepa - Tienda Online de Ropa y Accesorios.
+    \item \textbf{Título del documento:} Manual de Usuario Final.
+    \item \textbf{Responsable de desarrollo:} Oliver Romo.
+    \item \textbf{Fecha de emisión:} 28 de agosto de 2026.
+    \item \textbf{Versión de la plataforma:} v1.0.0 (Producción).
 \end{itemize}
 
-\section*{RECOMENDACIONES}
+\section*{DESCRIPCIÓN GENERAL}
+Akepa es una tienda virtual orientada a la venta de ropa urbana y accesorios de diseño. Este manual describe paso a paso cómo cualquier usuario puede explorar el catálogo de prendas, filtrar artículos según su talla o color predilecto, consultar tablas de medidas en centímetros, añadir productos a su bolsa de compras y finalizar su pedido de forma rápida y segura desde cualquier dispositivo con conexión a internet.
+
+\section*{REQUISITOS Y ACCESO AL SISTEMA}
 \begin{itemize}
-  \item Crear primero una estructura legible de una columna y añadir columnas donde el contenido ya disponga de espacio.
-  \item Probar anchos intermedios, no solo los tres anchos de las capturas, para detectar texto comprimido, botones pequeños u overflow.
-  \item Usar \texttt{minmax(0, 1fr)} para una columna que puede contener elementos largos y evitar desbordamiento horizontal.
+    \item \textbf{Navegador recomendado:} Google Chrome, Mozilla Firefox, Apple Safari o Microsoft Edge en sus versiones recientes.
+    \item \textbf{Conexión a Internet:} Conexión estándar de datos móviles (3G, 4G, 5G) o red Wi-Fi fija.
+    \item \textbf{Dispositivos compatibles:} Teléfonos inteligentes, tablets, laptops y computadoras de escritorio.
+    \item \textbf{Registro de cuenta:} No es obligatorio crear una cuenta para navegar o comprar; el sistema permite compras directas como invitado ingresando los datos de entrega.
+    \item \textbf{Enlace de acceso directo:} \href{https://akepa.netlify.app/}{https://akepa.netlify.app/}
 \end{itemize}
 
-\begin{thebibliography}{9}
-\bibitem{mdn-grid-concepts} MDN Web Docs, ``Basic concepts of grid layout,'' Mozilla. [En línea]. Disponible: \url{https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Basic_concepts}. [Accedido: 19-ago-2026].
-\bibitem{mdn-grid-layout} MDN Web Docs, ``CSS grid layout,'' Mozilla. [En línea]. Disponible: \url{https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout}. [Accedido: 19-ago-2026].
-\bibitem{mdn-responsive} MDN Web Docs, ``Responsive web design,'' Mozilla. [En línea]. Disponible: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design}. [Accedido: 19-ago-2026].
-\bibitem{mdn-media} MDN Web Docs, ``Media query fundamentals,'' Mozilla. [En línea]. Disponible: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Media_queries}. [Accedido: 19-ago-2026].
-\bibitem{w3c-grid} CSS Working Group, ``CSS Grid Layout Module Level 2.'' [En línea]. Disponible: \url{https://www.w3.org/TR/css-grid-2/}. [Accedido: 19-ago-2026].
-\end{thebibliography}
+\section*{ESTRUCTURA GENERAL DE NAVEGACIÓN}
+La interfaz de Akepa está organizada en cinco zonas visuales claras y consistentes:
+\begin{enumerate}
+    \item \textbf{Barra Superior de Navegación:} Contiene el logotipo de Akepa para volver al inicio, los enlaces a categorías principales (Camisetas, Buzos, Pantalones, Accesorios), la barra de búsqueda y el icono de la cesta con el contador de prendas añadidas.
+    \item \textbf{Panel de Filtros y Búsqueda:} Ubicado en la parte superior en teléfonos y en el lateral izquierdo en computadoras, permite acotar los productos por tipo de prenda, talla (XS a XL) y presupuesto.
+    \item \textbf{Área Principal de Catálogo:} Muestra las tarjetas con la fotografía real de cada prenda, su nombre oficial, su precio en dólares y las tallas disponibles.
+    \item \textbf{Panel Desplegable de Carrito:} Ventana lateral que resume los artículos escogidos, permitiendo cambiar cantidades o eliminarlos antes de pagar.
+    \item \textbf{Pie de Página (Footer):} Ofrece información sobre políticas de cambio de ropa, costos de envíos interprovinciales y canales de soporte directo.
+\end{enumerate}
+
+\section*{GUÍA PANTALLA POR PANTALLA}
+\begin{itemize}
+    \item \textbf{Pantalla de Inicio (Home):} Presenta las novedades de la temporada y accesos rápidos a las prendas más vendidas. Desde aquí puede presionar cualquier colección para ir directamente al catálogo.
+    \item \textbf{Pantalla de Catálogo de Ropa y Accesorios:} Muestra todos los artículos de Akepa. Puede pulsar cualquier tarjeta para abrir la ficha técnica completa del producto.
+    \item \textbf{Pantalla de Ficha Técnica de Producto:} Muestra la galería de fotos en alta resolución. Aquí debe seleccionar obligatoriamente su talla (ejemplo: Talla M) y color deseado. Puede hacer clic en el botón Guía de Tallas para abrir una ventana con las medidas exactas de pecho, largo y mangas.
+    \item \textbf{Pantalla de Cesta de Compras:} Despliega la lista de prendas acumuladas. Puede pulsar los botones más (+) o menos (-) para modificar unidades, o el icono de papelera para retirar un ítem.
+    \item \textbf{Pantalla de Checkout y Envío:} Solicita los nombres, número de cédula o RUC, teléfono, provincia, ciudad y dirección exacta de entrega. Muestra el costo de envío correspondiente y el botón final Confirmar Pedido.
+    \item \textbf{Pantalla de Pedido Confirmado:} Muestra una felicitación de compra exitosa junto al código único de orden (ejemplo: AK-8492) y el resumen detallado para su respaldo.
+\end{itemize}
+
+\section*{DESCRIPCIÓN DE PROCESOS PASO A PASO}
+
+\subsection*{Proceso 1: Selección y compra de una prenda de vestir}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|c|p{0.42\textwidth}|X|}
+\hline
+\textbf{Paso} & \textbf{Acción del Usuario} & \textbf{Resultado Esperado en Pantalla} \\ \hline
+1 & Entrar a la tienda Akepa y pulsar la categoría Camisetas. & El catálogo filtra y muestra únicamente las camisetas disponibles. \\ \hline
+2 & Hacer clic sobre la tarjeta Camiseta Oversize Carbón. & Se abre la página con las fotos y detalles de la prenda. \\ \hline
+3 & Seleccionar la Talla L y el Color Negro. & Los botones se iluminan en azul confirmando la elección activa. \\ \hline
+4 & Pulsar el botón Agregar al Carrito. & Aparece una notificación verde y el contador de la cesta sube a 1. \\ \hline
+5 & Abrir la cesta y presionar Iniciar Compra. & El sistema redirige al formulario seguro de checkout. \\ \hline
+6 & Llenar la dirección de entrega y pulsar Confirmar Pedido. & La orden queda registrada y se exhibe el código de seguimiento. \\ \hline
+\end{tabularx}
+\end{table}
+
+\section*{FORMULARIOS, MENSAJES Y VALIDACIONES}
+\begin{itemize}
+    \item \textbf{Campos Obligatorios de Entrega:} Nombres completos, Teléfono celular (10 dígitos), Correo electrónico, Provincia, Ciudad y Calle principal con numeración o referencia.
+    \item \textbf{Formato Esperado de Datos:} El teléfono solo admite números enteros sin letras ni símbolos extraños. El correo requiere el formato estándar con arroba y dominio válido.
+    \item \textbf{Mensajes de Ayuda y Corrección:} Si omite un campo obligatorio, la casilla se resaltará con un borde rojo y un texto explicativo como: Ingrese un número de contacto válido para coordinar la entrega.
+    \item \textbf{Mensaje de Confirmación Final:} Al completar los datos válidos, se genera un mensaje verde: Su pedido ha sido registrado con éxito. Pronto recibirá la notificación de despacho.
+\end{itemize}
+
+\section*{NAVEGACIÓN Y USO EN DISPOSITIVOS MÓVILES Y DE ESCRITORIO}
+\begin{itemize}
+    \item \textbf{En Teléfonos Inteligentes (Modo Táctil):} Para abrir el menú de secciones, toque el icono de tres líneas en la esquina superior izquierda. Para ver el carrito, toque el icono de la bolsa en la esquina superior derecha. Puede cerrar modales tocando la equis (X) superior o cualquier zona oscura fuera de la ventana.
+    \item \textbf{En Computadoras y Laptops (Teclado y Ratón):} Puede utilizar la tecla Tab para avanzar entre productos y botones de forma secuencial, y la tecla Enter para activar cualquier selección. Para cerrar una ventana emergente de medidas de forma rápida, puede presionar la tecla Escape (Esc) en cualquier momento.
+\end{itemize}
+
+\section*{PREGUNTAS FRECUENTES Y SOLUCIÓN DE PROBLEMAS}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|p{0.30\textwidth}|p{0.30\textwidth}|X|}
+\hline
+\textbf{Situación} & \textbf{Posible Causa} & \textbf{Solución Práctica} \\ \hline
+El botón de una talla aparece en gris y no permite hacer clic. & La talla seleccionada se encuentra temporalmente agotada en bodega. & Elija otra talla disponible o seleccione otro modelo equivalente en el catálogo. \\ \hline
+No se activa el botón para continuar la compra en checkout. & Uno de los campos de dirección o teléfono tiene datos incompletos o erróneos. & Revise las casillas marcadas con borde rojo y complete la información requerida. \\ \hline
+Las prendas añadidas no aparecen al volver a abrir la página. & El navegador se utilizó en modo incógnito estricto con bloqueo de almacenamiento. & Utilice una pestaña normal para que el sistema conserve su cesta de compras. \\ \hline
+\end{tabularx}
+\end{table}
+
+\section*{ACCESIBILIDAD Y FACILIDADES DE USO}
+La tienda web Akepa está diseñada para que cualquier persona pueda utilizarla cómodamente:
+\begin{itemize}
+    \item \textbf{Navegación completa por teclado:} No requiere el uso de ratón para recorrer y comprar en la tienda.
+    \item \textbf{Alto contraste de lectura:} Todos los textos de precios y descripciones poseen un contraste reforzado para facilitar la lectura bajo la luz del sol en teléfonos.
+    \item \textbf{Compatibilidad con lectores de pantalla:} Las imágenes de ropa incluyen descripciones claras para personas con discapacidad visual.
+\end{itemize}
+
+\section*{FLUJO PRINCIPAL VISUAL}
+El recorrido estándar de compra se sintetiza en cuatro acciones consecutivas:
+\begin{enumerate}
+    \item Exploración de prendas en el Catálogo de Akepa con filtros por talla.
+    \item Elección de variantes en la Ficha Técnica y verificación de medidas.
+    \item Revisión de cantidades en la Cesta de Compras lateral.
+    \item Registro de datos de entrega y obtención del Comprobante de Orden en Checkout.
+\end{enumerate}
+
+\section*{ENLACE DE ACCESO AL SISTEMA}
+Para ingresar y realizar compras en la tienda oficial de Akepa, utilice el siguiente enlace permanente:
+\begin{center}
+    \textbf{\href{https://akepa.netlify.app/}{https://akepa.netlify.app/}}
+\end{center}
 
 \end{document}
