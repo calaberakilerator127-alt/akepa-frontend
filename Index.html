@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akepa - Tienda Oficial de Ropa Urbana y Accesorios | PUCE TEC</title>
+  <meta name="description" content="Akepa: Tienda online de ropa urbana de corte oversize y accesorios contemporáneos. Proyecto Front End UX/UI - PUCE TEC.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <span>🚚 Envíos seguros a todo Ecuador | Garantía oficial de cambio de talla Akepa</span>
+    <button class="btn-grid-toggle" onclick="toggleGridInspector()" title="Activar resaltado visual de CSS Grid (RDA 3)">
+      📐 Inspector CSS Grid
+    </button>
+  </div>
+
+  <header>
+    <div class="header-container">
+      <div class="logo-area">
+
+        <button class="hamburger-btn" aria-label="Abrir menú de navegación" onclick="abrirMenuMovil()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="logo-brand" onclick="navegarA('inicio')">
+          AKEPA<span>.</span>
+          <span class="logo-badge">RDA 3</span>
+        </div>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <ul>
+          <li><button class="active-nav" id="nav-inicio" onclick="navegarA('inicio')">Inicio</button></li>
+          <li><button id="nav-catalogo" onclick="navegarA('catalogo')">Catálogo</button></li>
+          <li><button id="nav-soporte" onclick="navegarA('soporte')">Guía de Tallas</button></li>
+          <li><button id="nav-tracking" onclick="navegarA('tracking')">Rastrear Pedido</button></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon-action" onclick="navegarA('admin')" title="Acceso al Panel de Inventario">
+          ⚙️ Admin
+        </button>
+        <button class="cart-btn" onclick="abrirDrawerCarrito()" aria-label="Ver bolsa de compras">
+          <span>Bolsa</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="cerrarMenuMovil()"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menú móvil">
+    <div class="mobile-drawer-header">
+      <div class="logo-brand" onclick="navegarA('inicio'); cerrarMenuMovil();">AKEPA<span>.</span></div>
+      <button class="close-modal-btn" onclick="cerrarMenuMovil()" aria-label="Cerrar menú">&times;</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><button onclick="navegarA('inicio'); cerrarMenuMovil();">🏠 Inicio</button></li>
+      <li><button onclick="navegarA('catalogo'); cerrarMenuMovil();">👕 Catálogo Completo</button></li>
+      <li><button onclick="navegarA('soporte'); cerrarMenuMovil();">📏 Guía de Tallas & Medidas</button></li>
+      <li><button onclick="navegarA('tracking'); cerrarMenuMovil();">📦 Rastrear Pedido</button></li>
+      <li><button onclick="navegarA('admin'); cerrarMenuMovil();">⚙️ Panel Administrativo</button></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--borde); font-size: 0.8rem; color: var(--texto-secundario)">
+      Proyecto Front End UX/UI<br>
+      <strong>Oliver Romo - NRC 1324</strong>
+    </div>
+  </aside>
+
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="cerrarDrawerCarrito()"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Bolsa de compras rápida">
+    <div class="cart-drawer-header">
+      <h3 style="color: var(--azul-puce); font-size: 1.2rem; font-weight: 800">Tu Bolsa de Compras</h3>
+      <button class="close-modal-btn" onclick="cerrarDrawerCarrito()" aria-label="Cerrar bolsa">&times;</button>
+    </div>
+    <div class="cart-drawer-body" id="cartDrawerBody">
+
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="summary-row" style="font-weight: 800; font-size: 1.1rem; color: var(--azul-puce); margin-bottom: 1rem">
+        <span>Subtotal:</span>
+        <span id="drawerSubtotal">$0.00</span>
+      </div>
+      <button class="btn-main-action" style="width: 100%; margin-bottom: 0.6rem" onclick="cerrarDrawerCarrito(); navegarA('checkout');">
+        Tramitar Compra Rápida
+      </button>
+      <button class="btn-icon-action" style="width: 100%; justify-content: center" onclick="cerrarDrawerCarrito(); navegarA('carrito');">
+        Ver Carrito Completo
+      </button>
+    </div>
+  </aside>
+
+  <main>
+
+    <section class="view-interface active" id="view-inicio">
+      <div class="hero">
+        <span class="hero-tag">Colección Urbana 2026</span>
+        <h1>Viste con Identidad y Estilo Propio</h1>
+        <p>Prendas auténticas con corte oversize confeccionadas en 100% algodón peinado 24/1 y accesorios resistentes para la cultura urbana actual.</p>
+        <div class="hero-buttons">
+          <button class="hero-cta" onclick="navegarA('catalogo')">Explorar Catálogo</button>
+          <button class="hero-secondary-btn" onclick="navegarA('soporte')">Ver Guía de Tallas</button>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon">✨</div>
+          <div>
+            <h4>100% Algodón Peinado</h4>
+            <p>Textiles pesados de alta durabilidad que mantienen textura y color intactos.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">📐</div>
+          <div>
+            <h4>Cortes Holgados Reales</h4>
+            <p>Patronaje oversize auténtico con proporciones exactas de pecho y hombro.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">🚚</div>
+          <div>
+            <h4>Envíos Servientrega</h4>
+            <p>Despachos con código rastreable a Quito, Guayaquil, Cuenca y todas las provincias.</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon">🛡️</div>
+          <div>
+            <h4>Garantía de Cambio</h4>
+            <p>Hasta 7 días para cambios de talla sin costo adicional en prendas nuevas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div>
+          <h2>Explorar por Colección</h2>
+          <p>Selecciona una categoría para filtrar inmediatamente el catálogo</p>
+        </div>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card" onclick="filtrarCategoriaDesdeHome('Camisetas')">
+          <span class="cat-icon">👕</span>
+          <h3>Camisetas Oversize</h3>
+        </div>
+        <div class="category-card" onclick="filtrarCategoriaDesdeHome('Buzos')">
+          <span class="cat-icon">🧥</span>
+          <h3>Hoodies & Buzos</h3>
+        </div>
+        <div class="category-card" onclick="filtrarCategoriaDesdeHome('Pantalones')">
+          <span class="cat-icon">👖</span>
+          <h3>Pantalones Cargo</h3>
+        </div>
+        <div class="category-card" onclick="filtrarCategoriaDesdeHome('Accesorios')">
+          <span class="cat-icon">🎒</span>
+          <h3>Gorras y Mochilas</h3>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div>
+          <h2>Prendas Más Vendidas</h2>
+          <p>Los modelos preferidos de la temporada</p>
+        </div>
+        <button class="btn-icon-action" onclick="navegarA('catalogo')">Ver Todas →</button>
+      </div>
+      <div class="grilla-catalogo" id="homeFeaturedGrid">
+
+      </div>
+    </section>
+
+    <section class="view-interface" id="view-catalogo">
+      <div class="section-header">
+        <div>
+          <h2>Catálogo Oficial de Ropa y Accesorios</h2>
+          <p>Filtra por colección, talla o presupuesto y encuentra tu ajuste ideal</p>
+        </div>
+      </div>
+
+      <div class="catalog-toolbar">
+        <div class="search-box">
+          <span class="search-icon-inside">🔍</span>
+          <input type="text" class="search-input" id="searchBar" placeholder="Buscar por modelo, color o categoría..." oninput="ejecutarBusqueda()">
+        </div>
+        <div class="sort-box">
+          <label for="catalogSort">Ordenar por:</label>
+          <select id="catalogSort" class="sort-select" onchange="aplicarOrdenamiento()">
+            <option value="populares">Más Populares</option>
+            <option value="menor-precio">Menor Precio</option>
+            <option value="mayor-precio">Mayor Precio</option>
+            <option value="nombre">Nombre (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="catalog-layout">
+
+        <aside class="filters-sidebar">
+          <div class="filter-group">
+            <div class="filter-title">
+              <span>Colección</span>
+              <button style="background:none;border:none;font-size:0.75rem;color:var(--azul-puce);cursor:pointer" onclick="limpiarFiltros()">Limpiar</button>
+            </div>
+            <div class="filter-pills">
+              <button class="filter-pill active" onclick="filtrarCategoria('todos', this)">Todas</button>
+              <button class="filter-pill" onclick="filtrarCategoria('Camisetas', this)">Camisetas</button>
+              <button class="filter-pill" onclick="filtrarCategoria('Buzos', this)">Hoodies</button>
+              <button class="filter-pill" onclick="filtrarCategoria('Pantalones', this)">Pantalones</button>
+              <button class="filter-pill" onclick="filtrarCategoria('Chaquetas', this)">Chaquetas</button>
+              <button class="filter-pill" onclick="filtrarCategoria('Accesorios', this)">Accesorios</button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <div class="filter-title">Talla Disponible</div>
+            <div class="filter-pills">
+              <button class="filter-pill" onclick="filtrarTalla('XS', this)">XS</button>
+              <button class="filter-pill" onclick="filtrarTalla('S', this)">S</button>
+              <button class="filter-pill" onclick="filtrarTalla('M', this)">M</button>
+              <button class="filter-pill" onclick="filtrarTalla('L', this)">L</button>
+              <button class="filter-pill" onclick="filtrarTalla('XL', this)">XL</button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <div class="filter-title">Presupuesto Máximo: <span id="priceValLabel" style="color:var(--azul-puce);font-weight:800">$70</span></div>
+            <input type="range" id="priceRange" min="20" max="70" step="5" value="70" style="width: 100%" oninput="filtrarPorPrecio(this.value)">
+          </div>
+        </aside>
+
+        <div>
+          <div class="grilla-catalogo" id="fullCatalogGrid">
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view-interface" id="view-producto">
+      <button class="btn-icon-action" style="margin-bottom: 1.5rem" onclick="navegarA('catalogo')">
+        ← Volver al Catálogo
+      </button>
+      <div class="product-detail-layout" id="productDetailContainer">
+
+      </div>
+    </section>
+
+    <section class="view-interface" id="view-carrito">
+      <div class="section-header">
+        <div>
+          <h2>Bolsa de Compras</h2>
+          <p>Revisa las prendas seleccionadas antes de proceder al despacho</p>
+        </div>
+      </div>
+
+      <div class="cart-page-layout">
+        <div class="cart-table-box" id="cartTableContainer">
+
+        </div>
+
+        <aside class="summary-box">
+          <h3>Resumen del Pedido</h3>
+          <div class="summary-row">
+            <span>Subtotal de Prendas:</span>
+            <span id="cartSubtotalText">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Descuento Promocional:</span>
+            <span id="cartDiscountText" style="color: var(--verde-urbano)">-$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Envío Estimado:</span>
+            <span style="color: var(--texto-secundario)">Calculado en checkout</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="cartTotalText">$0.00</span>
+          </div>
+
+          <div class="coupon-box">
+            <label for="couponInput">¿Tienes un cupón de descuento?</label>
+            <div class="coupon-input-group">
+              <input type="text" id="couponInput" placeholder="Ej: AKEPA10, PUCE2026">
+              <button class="btn-icon-action" onclick="aplicarCupon()">Aplicar</button>
+            </div>
+            <p class="coupon-feedback" id="couponMsg"></p>
+          </div>
+
+          <button class="btn-main-action" style="width: 100%" onclick="navegarA('checkout')">
+            Continuar al Checkout →
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view-interface" id="view-checkout">
+      <button class="btn-icon-action" style="margin-bottom: 1.5rem" onclick="navegarA('carrito')">
+        ← Volver a la Bolsa
+      </button>
+
+      <div class="section-header">
+        <div>
+          <h2>Finalizar Compra y Datos de Entrega</h2>
+          <p>Ingresa tus datos de envío para coordinar el despacho seguro</p>
+        </div>
+      </div>
+
+      <div class="cart-page-layout">
+        <div class="cart-table-box">
+          <form id="orderForm" onsubmit="confirmarPedidoFinal(event)">
+            <div class="form-group">
+              <label for="c_nombres">Nombres y Apellidos Completos *</label>
+              <input type="text" id="c_nombres" required placeholder="Mateo Andrade">
+              <span class="form-error-msg">Por favor ingresa tus nombres y apellidos.</span>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="c_cedula">Número de Cédula o RUC *</label>
+                <input type="text" id="c_cedula" required pattern="^[0-9]{10,13}$" placeholder="1712345678">
+                <span class="form-error-msg">Ingresa una cédula de 10 dígitos o RUC válido.</span>
+              </div>
+              <div class="form-group">
+                <label for="c_telefono">Teléfono Celular (WhatsApp) *</label>
+                <input type="tel" id="c_telefono" autocomplete="tel" required pattern="^09[0-9]{8}$" placeholder="0991234567">
+                <span class="form-error-msg">Ingresa un celular válido de 10 dígitos (Ej: 0991234567).</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="c_email">Correo Electrónico *</label>
+              <input type="email" id="c_email" autocomplete="email" required placeholder="mateo.andrade@puce.edu.ec">
+              <span class="form-error-msg">Ingresa un correo electrónico válido.</span>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="c_provincia">Provincia de Destino *</label>
+                <select id="c_provincia" required onchange="calcularTotalesCheckout()">
+                  <option value="Pichincha">Pichincha (Quito y Valles) - $3.50</option>
+                  <option value="Guayas">Guayas (Guayaquil y cantones) - $5.00</option>
+                  <option value="Azuay">Azuay (Cuenca) - $5.00</option>
+                  <option value="Manabi">Manabí (Manta / Portoviejo) - $5.00</option>
+                  <option value="Tungurahua">Tungurahua (Ambato) - $4.50</option>
+                  <option value="Otras">Otras Provincias del Ecuador - $5.50</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="c_ciudad">Ciudad / Cantón *</label>
+                <input type="text" id="c_ciudad" required placeholder="Quito">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="c_direccion">Dirección Exacta y Referencia *</label>
+              <input type="text" id="c_direccion" required placeholder="Av. 12 de Octubre y Patria, Torre B, Apto 402">
+            </div>
+
+            <div class="form-group">
+              <label for="c_pago">Método de Pago Seleccionado *</label>
+              <select id="c_pago" required>
+                <option value="Transferencia Bancaria">Transferencia Bancaria Directa (Banco Pichincha / Guayaquil / DeUna)</option>
+                <option value="Tarjeta de Crédito / Débito">Tarjeta de Crédito o Débito (Visa / Mastercard)</option>
+                <option value="Pago Contra Entrega">Pago contra entrega en efectivo (Solo Quito urbano)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn-main-action" style="background-color: var(--verde-urbano); width: 100%; margin-top: 1rem">
+              Confirmar y Emitir Comprobante de Compra
+            </button>
+          </form>
+        </div>
+
+        <aside class="summary-box">
+          <h3>Liquidación del Pedido</h3>
+          <div class="summary-row">
+            <span>Prendas seleccionadas:</span>
+            <span id="co_subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Descuento aplicado:</span>
+            <span id="co_discount" style="color: var(--verde-urbano)">-$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Tarifa de Envío:</span>
+            <span id="co_shipping">$3.50</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total Final:</span>
+            <span id="co_total">$0.00</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--texto-secundario); margin-top: 1.25rem; line-height: 1.4">
+            🔒 Compra protegida con cifrado SSL. Al confirmar, tus prendas quedan reservadas y recibirás tu número de seguimiento oficial.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view-interface" id="view-tracking">
+      <div class="tracking-card">
+        <div class="success-icon-badge">✓</div>
+        <h2 style="color: var(--azul-puce); font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem">
+          ¡Pedido Registrado con Éxito!
+        </h2>
+        <p style="color: var(--texto-secundario); margin-bottom: 2rem">
+          Hemos recibido tu solicitud y la orden ha sido registrada en los almacenes de Akepa.
+        </p>
+
+        <div class="tracking-stepper">
+          <div class="step-node completed">
+            <div class="step-circle">1</div>
+            <div class="step-label">Recibido</div>
+          </div>
+          <div class="step-node active" id="step2Node">
+            <div class="step-circle">2</div>
+            <div class="step-label">Preparación</div>
+          </div>
+          <div class="step-node" id="step3Node">
+            <div class="step-circle">3</div>
+            <div class="step-label">En Tránsito</div>
+          </div>
+          <div class="step-node" id="step4Node">
+            <div class="step-circle">4</div>
+            <div class="step-label">Entregado</div>
+          </div>
+        </div>
+
+        <div class="order-invoice-box">
+          <div class="invoice-row">
+            <span>Código de Seguimiento:</span>
+            <strong style="color: var(--azul-puce); font-size: 1.1rem" id="tr_code">AK-8492</strong>
+          </div>
+          <div class="invoice-row">
+            <span>Cliente:</span>
+            <strong id="tr_client">Mateo Andrade</strong>
+          </div>
+          <div class="invoice-row">
+            <span>Destino:</span>
+            <strong id="tr_location">Pichincha (Quito)</strong>
+          </div>
+          <div class="invoice-row">
+            <span>Método de Pago:</span>
+            <strong id="tr_payment">Transferencia Bancaria</strong>
+          </div>
+          <div class="invoice-row">
+            <span>Estado de Despacho:</span>
+            <span style="background-color: var(--alerta-fondo); color: var(--alerta); padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.8rem">
+              En Almacén Central (Quito)
+            </span>
+          </div>
+          <div class="invoice-row" style="border-top: 1px solid var(--borde); padding-top: 0.75rem; margin-top: 0.75rem; font-size: 1.15rem">
+            <strong>Monto Total Cancelado:</strong>
+            <strong style="color: var(--azul-puce)" id="tr_total">$0.00</strong>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap">
+          <button class="btn-main-action" onclick="window.print()">
+            🖨️ Imprimir Comprobante
+          </button>
+          <button class="btn-icon-action" onclick="navegarA('catalogo')">
+            Hacer Otra Compra
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="view-interface" id="view-admin">
+      <div class="section-header">
+        <div>
+          <h2>Panel de Control - Inventario Akepa</h2>
+          <p>Métricas de stock en tiempo real y administración del catálogo</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem">
+          <button class="btn-icon-action" onclick="exportarInventarioJSON()">📥 Exportar JSON</button>
+          <button class="btn-main-action" onclick="abrirModalNuevoProducto()">+ Nueva Prenda</button>
+        </div>
+      </div>
+
+      <div class="admin-stats-grid">
+        <div class="stat-card">
+          <h5>Total Modelos</h5>
+          <div class="val" id="adm_total_models">8</div>
+        </div>
+        <div class="stat-card">
+          <h5>Stock en Bodega</h5>
+          <div class="val" id="adm_total_stock">195</div>
+        </div>
+        <div class="stat-card">
+          <h5>Alertas Stock Bajo</h5>
+          <div class="val" id="adm_low_stock" style="color: var(--alerta)">2</div>
+        </div>
+        <div class="stat-card">
+          <h5>Ventas Estimadas</h5>
+          <div class="val">$540.00</div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-title">Distribución de Inventario por Categoría (Unidades)</div>
+        <div class="css-bar-chart" id="adminBarChart">
+
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>SKU</th>
+              <th>Prenda / Modelo</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Tallas</th>
+              <th>Stock Actual</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="view-interface" id="view-soporte">
+      <div class="section-header">
+        <div>
+          <h2>Guía Oficial de Tallas y Soporte</h2>
+          <p>Medidas exactas en centímetros y asesoría para tu compra</p>
+        </div>
+      </div>
+
+      <div class="calculator-box">
+        <h3>📏 Calculadora de Talla Recomendada</h3>
+        <p style="font-size: 0.9rem; color: var(--texto-secundario); margin-bottom: 1.25rem">
+          Ingresa tu estatura y peso aproximado para sugerirte el corte oversize ideal en prendas superiores:
+        </p>
+        <div class="form-grid-2" style="max-width: 500px">
+          <div class="form-group">
+            <label for="calc_altura">Estatura (cm)</label>
+            <input type="number" id="calc_altura" placeholder="Ej: 175" value="175">
+          </div>
+          <div class="form-group">
+            <label for="calc_peso">Peso (kg)</label>
+            <input type="number" id="calc_peso" placeholder="Ej: 70" value="70">
+          </div>
+        </div>
+        <button class="btn-main-action" style="max-width: 250px" onclick="calcularTallaRecomendada()">
+          Calcular Talla Ideal
+        </button>
+        <div id="calc_result" style="margin-top: 1rem; font-weight: 700; color: var(--azul-puce); font-size: 1.05rem"></div>
+      </div>
+
+      <div class="cart-page-layout">
+        <div class="cart-table-box">
+          <h3 style="color: var(--azul-puce); margin-bottom: 1rem">Tabla de Medidas (Prendas Superiores Oversize)</h3>
+          <div class="table-responsive" style="margin-bottom: 1.5rem">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Talla</th>
+                  <th>Pecho (cm)</th>
+                  <th>Largo (cm)</th>
+                  <th>Manga (cm)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>S (Oversize)</strong></td>
+                  <td>56</td>
+                  <td>72</td>
+                  <td>23</td>
+                </tr>
+                <tr>
+                  <td><strong>M (Oversize)</strong></td>
+                  <td>59</td>
+                  <td>75</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td><strong>L (Oversize)</strong></td>
+                  <td>62</td>
+                  <td>78</td>
+                  <td>25</td>
+                </tr>
+                <tr>
+                  <td><strong>XL (Oversize)</strong></td>
+                  <td>65</td>
+                  <td>81</td>
+                  <td>26</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="color: var(--azul-puce); margin-bottom: 0.75rem">Políticas de Envíos y Cambios</h3>
+          <p style="font-size: 0.9rem; color: var(--texto-secundario); margin-bottom: 0.6rem">
+            • <strong>Tiempos de entrega:</strong> 24 horas en Quito y Valles; 48 a 72 horas para Guayaquil, Cuenca y demás provincias mediante Servientrega.
+          </p>
+          <p style="font-size: 0.9rem; color: var(--texto-secundario)">
+            • <strong>Garantía de cambio:</strong> Tienes hasta 7 días posteriores a la recepción para solicitar el cambio de talla manteniendo las etiquetas originales.
+          </p>
+        </div>
+
+        <aside class="summary-box">
+          <h3>Contacto Directo</h3>
+          <p style="font-size: 0.88rem; color: var(--texto-secundario); margin-bottom: 1.25rem">
+            ¿Tienes dudas con un pedido o requieres asesoría en textiles?
+          </p>
+          <div class="form-group">
+            <label for="contact_name">Tu Nombre</label>
+            <input type="text" id="contact_name" placeholder="Mateo">
+          </div>
+          <div class="form-group">
+            <label for="contact_msg">Mensaje</label>
+            <textarea id="contact_msg" rows="3" placeholder="Hola, quisiera consultar disponibilidad de..."></textarea>
+          </div>
+          <button class="btn-main-action" style="width: 100%" onclick="mostrarToast('Mensaje enviado. Te contactaremos vía WhatsApp.')">
+            Enviar Mensaje
+          </button>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="modal-overlay" id="sizeGuideModal" role="dialog" aria-modal="true" aria-labelledby="sizeModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="sizeModalTitle">Guía de Medidas (Centímetros)</h3>
+        <button class="close-modal-btn" onclick="cerrarModal('sizeGuideModal')" aria-label="Cerrar">&times;</button>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--texto-secundario); margin-bottom: 1rem">
+        Medidas tomadas con la prenda en plano sobre superficie lisa:
+      </p>
+      <table class="admin-table" style="margin-bottom: 1.5rem">
+        <thead>
+          <tr>
+            <th>Talla</th>
+            <th>Pecho (cm)</th>
+            <th>Largo (cm)</th>
+            <th>Hombros (cm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>S</strong></td><td>56</td><td>72</td><td>54</td></tr>
+          <tr><td><strong>M</strong></td><td>59</td><td>75</td><td>57</td></tr>
+          <tr><td><strong>L</strong></td><td>62</td><td>78</td><td>60</td></tr>
+          <tr><td><strong>XL</strong></td><td>65</td><td>81</td><td>63</td></tr>
+        </tbody>
+      </table>
+      <button class="btn-main-action" style="width: 100%" onclick="cerrarModal('sizeGuideModal')">Entendido</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="adminProductModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="adminModalTitle">Registrar Nueva Prenda en Akepa</h3>
+        <button class="close-modal-btn" onclick="cerrarModal('adminProductModal')" aria-label="Cerrar">&times;</button>
+      </div>
+      <form onsubmit="guardarNuevaPrenda(event)">
+        <div class="form-group">
+          <label for="adm_nombre">Nombre del Modelo *</label>
+          <input type="text" id="adm_nombre" required placeholder="Ej: Camiseta Boxy Fit Sand">
+        </div>
+        <div class="form-group">
+          <label for="adm_categoria">Categoría *</label>
+          <select id="adm_categoria" required>
+            <option value="Camisetas">Camisetas</option>
+            <option value="Buzos">Hoodies & Buzos</option>
+            <option value="Pantalones">Pantalones Cargo</option>
+            <option value="Chaquetas">Chaquetas Bomber</option>
+            <option value="Accesorios">Accesorios</option>
+          </select>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="adm_precio">Precio ($) *</label>
+            <input type="number" step="0.01" id="adm_precio" required placeholder="28.00">
+          </div>
+          <div class="form-group">
+            <label for="adm_stock">Stock Inicial *</label>
+            <input type="number" id="adm_stock" required placeholder="20">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="adm_color">Color Predominante *</label>
+          <input type="text" id="adm_color" required placeholder="Negro Carbón">
+        </div>
+        <div class="form-group">
+          <label for="adm_imagen">URL de Imagen (Opcional)</label>
+          <input type="url" id="adm_imagen" placeholder="https://images.unsplash.com/...">
+        </div>
+        <button type="submit" class="btn-main-action" style="width: 100%">Guardar en Inventario</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Sobre Akepa</h4>
+        <p>Marca independiente ecuatoriana de moda urbana y accesorios de diseño de alto estándar textil.</p>
+        <p>Proyecto de desarrollo Front End por <strong>Oliver Romo (NRC 1324)</strong>.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación Rápida</h4>
+        <ul>
+          <li><a href="#catalogo" onclick="navegarA('catalogo')">Catálogo General de Ropa</a></li>
+          <li><a href="#soporte" onclick="navegarA('soporte')">Guía de Tallas y Medidas</a></li>
+          <li><a href="#tracking" onclick="navegarA('tracking')">Rastreo de Compras</a></li>
+          <li><a href="#admin" onclick="navegarA('admin')">Panel de Control de Inventario</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Garantía y Despachos</h4>
+        <p>Envíos diarios directos con cobertura nacional certificada en todo el Ecuador.</p>
+        <p style="color: #60A5FA; font-weight: 700">Horario de Despacho: Lun - Sáb (08:00 a 17:00)</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Akepa Store. Todos los derechos reservados. Pontificia Universidad Católica del Ecuador.</p>
+      <p>Diseño Web Responsive con CSS Grid | Enfoque Mobile-First</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

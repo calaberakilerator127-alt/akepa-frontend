@@ -1,0 +1,393 @@
+:root {
+      --figma-bg: #141414;
+      --figma-canvas: #1E1E1E;
+      --figma-panel: #262626;
+      --figma-border: #333333;
+      --figma-text: #F0F0F0;
+      --figma-text-muted: #8E8E8E;
+      --figma-blue: #0D99FF;
+      --figma-purple: #A259FF;
+      --figma-green: #0ACF83;
+      --figma-orange: #FF7262;
+
+      
+      --azul-puce: #073B70;
+      --azul-oscuro: #042548;
+      --azul-claro: #EEF5FB;
+      --verde-urbano: #006455;
+      --verde-suave: #DCFCE7;
+      --verde-texto: #15803D;
+      --fondo-pagina: #F5F8FC;
+      --superficie: #FFFFFF;
+      --texto-principal: #1E293B;
+      --texto-secundario: #64748B;
+      --borde: #E2E8F0;
+      --borde-fuerte: #CBD5E1;
+      --error: #DC2626;
+      --alerta: #D97706;
+      --radio-sm: 6px;
+      --radio-md: 10px;
+      --radio-lg: 16px;
+      --radio-full: 9999px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--figma-canvas);
+      color: var(--figma-text);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    
+    .figma-toolbar {
+      background-color: var(--figma-bg);
+      border-bottom: 1px solid var(--figma-border);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.25rem;
+      flex-shrink: 0;
+      z-index: 1000;
+    }
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .figma-logo-badge {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #F24E1E 0%, #A259FF 50%, #1ABCFE 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: #FFF;
+    }
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      border-left: 1px solid var(--figma-border);
+      padding-left: 0.85rem;
+    }
+    .project-meta strong { color: #FFF; }
+    .badge-tag {
+      background: rgba(10, 207, 131, 0.15);
+      color: var(--figma-green);
+      border: 1px solid rgba(10, 207, 131, 0.3);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    
+    .device-switcher {
+      display: flex;
+      align-items: center;
+      background: var(--figma-panel);
+      padding: 3px;
+      border-radius: 6px;
+      border: 1px solid var(--figma-border);
+      gap: 3px;
+    }
+    .device-btn {
+      background: none;
+      border: none;
+      color: var(--figma-text-muted);
+      padding: 0.35rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s ease;
+    }
+    .device-btn:hover { color: #FFF; }
+    .device-btn.active {
+      background: var(--figma-bg);
+      color: var(--figma-blue);
+      font-weight: 800;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .btn-tool {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--figma-border);
+      color: var(--figma-text);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .btn-tool.active {
+      background: rgba(13, 153, 255, 0.2);
+      border-color: var(--figma-blue);
+      color: var(--figma-blue);
+    }
+    .btn-run-web {
+      background: var(--figma-blue);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.4rem 0.95rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    
+    .figma-body {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 52px);
+      overflow: hidden;
+    }
+
+    
+    .figma-sidebar-left {
+      width: 280px;
+      background: var(--figma-panel);
+      border-right: 1px solid var(--figma-border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .sidebar-header {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--figma-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--figma-border);
+      display: flex;
+      justify-content: space-between;
+    }
+    .interfaces-list {
+      list-style: none;
+      overflow-y: auto;
+      padding: 0.5rem 0;
+      flex: 1;
+    }
+    .interface-nav-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.82rem;
+      color: var(--figma-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: background 0.15s;
+    }
+    .interface-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .interface-nav-btn.active {
+      background: rgba(13, 153, 255, 0.15);
+      color: var(--figma-blue);
+      font-weight: 700;
+    }
+
+    
+    .canvas-stage {
+      flex: 1;
+      overflow: auto;
+      background-color: var(--figma-canvas);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    
+    .figma-sidebar-right {
+      width: 290px;
+      background: var(--figma-panel);
+      border-left: 1px solid var(--figma-border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      overflow-y: auto;
+      font-size: 0.8rem;
+    }
+    .inspect-card {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--figma-border);
+    }
+    .inspect-card h4 {
+      font-weight: 800;
+      color: var(--figma-blue);
+      margin-bottom: 0.75rem;
+      font-size: 0.82rem;
+    }
+    .prop-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.45rem;
+      color: var(--figma-text-muted);
+    }
+    .prop-row strong {
+      color: #FFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    
+    .interface-matrix-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1800px;
+    }
+    .interface-header-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--figma-bg);
+      border: 1px solid var(--figma-border);
+      padding: 0.85rem 1.5rem;
+      border-radius: 8px;
+    }
+    .interface-header-banner h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .devices-badge-info {
+      font-size: 0.78rem;
+      color: var(--figma-text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    
+    .devices-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5rem;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    
+    .device-shell {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .device-shell-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--figma-text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .device-dim-pill {
+      background: var(--figma-border);
+      color: #FFF;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    
+    .frame-pc {
+      width: 840px;
+      background: var(--fondo-pagina);
+      color: var(--texto-principal);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      position: relative;
+    }
+    .frame-tablet {
+      width: 480px;
+      background: var(--fondo-pagina);
+      color: var(--texto-principal);
+      border-radius: 12px;
+      border: 4px solid #1E293B;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      position: relative;
+    }
+    .frame-mobile {
+      width: 320px;
+      background: var(--fondo-pagina);
+      color: var(--texto-principal);
+      border-radius: 28px;
+      border: 6px solid #0F172A;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+      position: relative;
+    }
+
+    
+    .grid-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      display: none;
+      z-index: 99;
+    }
+    .grid-active .grid-overlay { display: grid; }
+    .frame-pc .grid-overlay { grid-template-columns: repeat(12, 1fr); gap: 12px; padding: 0 24px; }
+    .frame-tablet .grid-overlay { grid-template-columns: repeat(8, 1fr); gap: 10px; padding: 0 16px; }
+    .frame-mobile .grid-overlay { grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 12px; }
+    .grid-col { background: rgba(242, 78, 30, 0.06); border-left: 1px solid rgba(242, 78, 30, 0.15); border-right: 1px solid rgba(242, 78, 30, 0.15); }
+
+    
+    .u-topbar { background: var(--azul-puce); color: #fff; padding: 0.35rem 1rem; font-size: 0.72rem; text-align: center; }
+    .u-header { background: #fff; padding: 0.65rem 1rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--borde); }
+    .u-logo { font-weight: 900; font-size: 1.2rem; color: var(--azul-puce); }
+    .u-logo span { color: var(--verde-urbano); }
+    .u-btn-primary { background: var(--azul-puce); color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; }
+    .u-btn-secondary { background: var(--verde-urbano); color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+    .u-btn-outline { background: transparent; color: var(--azul-puce); border: 1px solid var(--azul-puce); padding: 0.45rem 0.85rem; border-radius: 6px; font-weight: 700; font-size: 0.78rem; cursor: pointer; }
+    
+    .u-card { background: #fff; border: 1px solid var(--borde); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+    .u-card img { width: 100%; height: 140px; object-fit: cover; }
+    .u-card-body { padding: 0.75rem; font-size: 0.8rem; display: flex; flex-direction: column; flex: 1; }
+
+    .chip-size-ui { padding: 0.2rem 0.5rem; border: 1px solid var(--borde); border-radius: 4px; font-size: 0.75rem; font-weight: 700; background: #fff; display: inline-block; }
+    .chip-size-ui.active { background: var(--azul-puce); color: #fff; border-color: var(--azul-puce); }
+    .chip-size-ui.disabled { opacity: 0.4; text-decoration: line-through; border-style: dashed; background: #F1F5F9; }

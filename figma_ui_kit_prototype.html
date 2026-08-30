@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figma Master: Matriz Responsiva Completa de TODAS las Interfaces (PC, Tablet, Móvil) | Akepa PUCE TEC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/figma.css">
+</head>
+<body>
+
+  <header class="figma-toolbar">
+    <div class="toolbar-left">
+      <div class="figma-logo-badge">F</div>
+      <div class="project-meta">
+        <span>Akepa Master: <strong>Todas las 11 Interfaces en PC, Tablet y Móvil</strong></span>
+        <span class="badge-tag">RDA 3 - PUCE TEC</span>
+      </div>
+    </div>
+
+    <div class="device-switcher">
+      <button class="device-btn active" onclick="filtrarDispositivo('all', this)">
+        🌐 Matriz Completa (PC + Tablet + Móvil)
+      </button>
+      <button class="device-btn" onclick="filtrarDispositivo('pc', this)">
+        💻 Solo PC (1440px)
+      </button>
+      <button class="device-btn" onclick="filtrarDispositivo('tablet', this)">
+        📱 Solo Tablet (768px)
+      </button>
+      <button class="device-btn" onclick="filtrarDispositivo('mobile', this)">
+        📲 Solo Móvil (390px)
+      </button>
+    </div>
+
+    <div class="toolbar-right">
+      <button class="btn-tool" id="btnGridToggle" onclick="toggleLayoutGrids()">
+        📐 12-Col Grid
+      </button>
+      <a href="Index.html" target="_blank" class="btn-run-web">
+        ▶ Probar Web Real
+      </a>
+    </div>
+  </header>
+
+  <div class="figma-body">
+
+    <aside class="figma-sidebar-left">
+      <div class="sidebar-header">
+        <span>Interfaces de la Plataforma (11)</span>
+      </div>
+      <ul class="interfaces-list">
+        <li><button class="interface-nav-btn active" onclick="irASeccion('sec-1-home', this)"><span>🏠</span> 1. Inicio (Hero & Marcas)</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-2-cat', this)"><span>👕</span> 2. Catálogo & Filtros</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-3-det', this)"><span>🔍</span> 3. Ficha Técnica / Detalle</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-4-car', this)"><span>🛍️</span> 4. Bolsa de Compras</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-5-dra', this)"><span>📂</span> 5. Drawer Lateral Carrito</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-6-chk', this)"><span>💳</span> 6. Checkout & Fletes</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-7-trk', this)"><span>📦</span> 7. Comprobante & Stepper</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-8-adm', this)"><span>📊</span> 8. Admin & CRUD Stock</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-9-sop', this)"><span>📏</span> 9. Guía de Tallas & Calculadora</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-10-mod', this)"><span>🪟</span> 10. Modal Guía de Medidas</button></li>
+        <li><button class="interface-nav-btn" onclick="irASeccion('sec-11-nav', this)"><span>📱</span> 11. Menú Móvil Lateral</button></li>
+      </ul>
+    </aside>
+
+    <main class="canvas-stage" id="canvasStage">
+
+      <section class="interface-matrix-block" id="sec-1-home">
+        <div class="interface-header-banner">
+          <h2><span>🏠</span> 1. Interfaz Inicio (Home & Hero)</h2>
+          <div class="devices-badge-info">PC 1440px (12 cols) | Tablet 768px (8 cols) | Móvil 390px (4 cols)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC / Escritorio</span><span class="device-dim-pill">1440 × 800 px</span></div>
+            <div class="frame-pc">
+              <div class="grid-overlay"><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div></div>
+              <div class="u-topbar">🚚 Envíos seguros a todo Ecuador | Garantía oficial Akepa</div>
+              <div class="u-header">
+                <div class="u-logo">AKEPA<span>.</span></div>
+                <div style="display:flex; gap:1.25rem; font-size:0.85rem; font-weight:700"><span style="color:var(--azul-puce)">Inicio</span><span>Catálogo</span><span>Guía de Tallas</span><span>Rastreo</span></div>
+                <button class="u-btn-primary" style="border-radius:9999px">Bolsa (0)</button>
+              </div>
+              <div style="background:linear-gradient(135deg, #073B70, #031B38); color:#fff; padding:2.5rem 2rem; margin:1rem; border-radius:12px; text-align:center">
+                <span style="background:rgba(255,255,255,0.15); padding:0.2rem 0.6rem; border-radius:9999px; font-size:0.7rem; font-weight:700">COLECCIÓN 2026</span>
+                <h2 style="font-size:1.8rem; font-weight:900; margin:0.5rem 0">Viste con Identidad y Estilo Propio</h2>
+                <button class="u-btn-primary" style="background:#fff; color:var(--azul-puce); font-weight:800">Explorar Catálogo</button>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; padding:0 1rem 1.5rem">
+                <div class="u-card"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300"><div class="u-card-body"><strong>Camiseta Carbón</strong><div>$28.00</div></div></div>
+                <div class="u-card"><img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300"><div class="u-card-body"><strong>Hoodie Acid Wash</strong><div>$55.00</div></div></div>
+                <div class="u-card"><img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=300"><div class="u-card-body"><strong>Cargo Asphalt</strong><div>$48.00</div></div></div>
+                <div class="u-card"><img src="https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?w=300"><div class="u-card-body"><strong>Chaqueta Bomber</strong><div>$65.00</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (iPad)</span><span class="device-dim-pill">768 × 800 px</span></div>
+            <div class="frame-tablet">
+              <div class="grid-overlay"><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div></div>
+              <div class="u-header">
+                <div class="u-logo">AKEPA.</div>
+                <div style="display:flex; gap:0.75rem; font-size:0.8rem; font-weight:700"><span style="color:var(--azul-puce)">Inicio</span><span>Catálogo</span><span>Tallas</span></div>
+                <button class="u-btn-primary" style="padding:0.3rem 0.6rem">Bolsa (0)</button>
+              </div>
+              <div style="background:linear-gradient(135deg, #073B70, #031B38); color:#fff; padding:1.5rem; margin:0.75rem; border-radius:10px; text-align:center">
+                <h3 style="font-size:1.3rem; font-weight:900">Viste con Identidad</h3>
+                <button class="u-btn-primary" style="background:#fff; color:var(--azul-puce); margin-top:0.5rem">Ver Catálogo</button>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; padding:0 0.75rem 1rem">
+                <div class="u-card"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300"><div class="u-card-body"><strong>Camiseta Carbón</strong><div>$28.00</div></div></div>
+                <div class="u-card"><img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300"><div class="u-card-body"><strong>Hoodie Acid Wash</strong><div>$55.00</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (iPhone)</span><span class="device-dim-pill">390 × 800 px</span></div>
+            <div class="frame-mobile">
+              <div class="grid-overlay"><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div></div>
+              <div class="u-header" style="padding:0.6rem">
+                <div style="display:flex; align-items:center; gap:0.4rem"><span>☰</span><div class="u-logo" style="font-size:1.1rem">AKEPA.</div></div>
+                <button class="u-btn-primary" style="padding:0.25rem 0.5rem; font-size:0.75rem">🛍️ 0</button>
+              </div>
+              <div style="padding:0.75rem">
+                <div style="background:linear-gradient(135deg, #073B70, #031B38); color:#fff; padding:1.25rem; border-radius:8px; text-align:center; margin-bottom:0.75rem">
+                  <h4 style="font-size:1.1rem; font-weight:800">Moda Urbana 2026</h4>
+                  <button class="u-btn-primary" style="background:#fff; color:var(--azul-puce); padding:0.4rem 0.8rem; margin-top:0.4rem; font-size:0.75rem">Explorar</button>
+                </div>
+                <div class="u-card">
+                  <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300">
+                  <div class="u-card-body">
+                    <strong>Camiseta Oversize Carbón</strong>
+                    <div style="color:var(--azul-puce); font-weight:800">$28.00</div>
+                    <button class="u-btn-primary" style="width:100%; margin-top:0.4rem; font-size:0.75rem">Comprar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-2-cat">
+        <div class="interface-header-banner">
+          <h2><span>👕</span> 2. Interfaz Catálogo Oficial & Filtros</h2>
+          <div class="devices-badge-info">PC (Sidebar + 3 Cols) | Tablet (2 Cols) | Móvil (1 Col)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (1440px)</span><span class="device-dim-pill">Sidebar + Grid</span></div>
+            <div class="frame-pc" style="padding:1rem">
+              <div style="display:grid; grid-template-columns:180px 1fr; gap:1rem">
+                <div style="background:#fff; padding:0.85rem; border-radius:6px; border:1px solid var(--borde); font-size:0.75rem">
+                  <strong>Colecciones</strong>
+                  <div style="display:flex; flex-direction:column; gap:0.25rem; margin-top:0.4rem; color:var(--azul-puce); font-weight:700">• Camisetas<br>• Hoodies<br>• Pantalones<br>• Chaquetas<br>• Accesorios</div>
+                  <strong style="display:block; margin-top:0.75rem">Tallas</strong>
+                  <div style="display:flex; gap:0.2rem; margin-top:0.3rem">
+                    <span class="chip-size-ui">S</span><span class="chip-size-ui active">M</span><span class="chip-size-ui">L</span>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.75rem">
+                  <div class="u-card"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300"><div class="u-card-body"><strong>Camiseta Carbón</strong><p>$28.00</p><button class="u-btn-outline" style="margin-top:auto">Ver Ficha</button></div></div>
+                  <div class="u-card"><img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300"><div class="u-card-body"><strong>Hoodie Acid Wash</strong><p>$55.00</p><button class="u-btn-outline" style="margin-top:auto">Ver Ficha</button></div></div>
+                  <div class="u-card"><img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=300"><div class="u-card-body"><strong>Cargo Asphalt</strong><p>$48.00</p><button class="u-btn-outline" style="margin-top:auto">Ver Ficha</button></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (768px)</span><span class="device-dim-pill">2 Columnas</span></div>
+            <div class="frame-tablet" style="padding:0.75rem">
+              <div style="display:flex; gap:0.3rem; margin-bottom:0.6rem; font-size:0.72rem">
+                <span class="chip-size-ui active">Todo</span><span class="chip-size-ui">Camisetas</span><span class="chip-size-ui">Hoodies</span><span class="chip-size-ui">Cargos</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem">
+                <div class="u-card"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300"><div class="u-card-body"><strong>Camiseta Carbón</strong><p>$28.00</p></div></div>
+                <div class="u-card"><img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300"><div class="u-card-body"><strong>Hoodie Acid Wash</strong><p>$55.00</p></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (390px)</span><span class="device-dim-pill">1 Columna</span></div>
+            <div class="frame-mobile" style="padding:0.75rem">
+              <input type="text" placeholder="🔍 Buscar..." style="width:100%; padding:0.4rem; border:1px solid var(--borde); border-radius:6px; margin-bottom:0.5rem; font-size:0.75rem">
+              <div class="u-card">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300">
+                <div class="u-card-body">
+                  <strong>Camiseta Oversize Carbón</strong>
+                  <div style="color:var(--azul-puce); font-weight:800">$28.00</div>
+                  <button class="u-btn-primary" style="width:100%; margin-top:0.4rem; font-size:0.75rem">Ver Ficha</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-3-det">
+        <div class="interface-header-banner">
+          <h2><span>🔍</span> 3. Interfaz Ficha Técnica / Detalle de Prenda</h2>
+          <div class="devices-badge-info">PC (2 Cols 1fr 1.2fr) | Tablet (2 Cols) | Móvil (1 Col Stack)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (1440px)</span><span class="device-dim-pill">2 Cols Horizontales</span></div>
+            <div class="frame-pc" style="padding:1.25rem">
+              <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:1.5rem; background:#fff; padding:1.5rem; border-radius:8px">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400" style="width:100%; height:250px; object-fit:cover; border-radius:6px">
+                <div>
+                  <span style="color:var(--verde-urbano); font-weight:700; font-size:0.75rem">100% ALGODÓN PEINADO</span>
+                  <h3 style="font-size:1.3rem; color:var(--azul-puce)">Camiseta Oversize Carbón</h3>
+                  <div style="font-size:1.4rem; font-weight:800; color:var(--verde-urbano); margin:0.3rem 0">$28.00</div>
+                  <div style="margin:0.6rem 0; font-size:0.8rem">Tallas: <span class="chip-size-ui">S</span> <span class="chip-size-ui active">M</span> <span class="chip-size-ui">L</span> <span class="chip-size-ui disabled">XL</span></div>
+                  <button class="u-btn-primary" style="width:100%; height:44px">🛍️ Añadir a la Bolsa de Compras</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (768px)</span><span class="device-dim-pill">2 Cols Compactas</span></div>
+            <div class="frame-tablet" style="padding:1rem">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; background:#fff; padding:1rem; border-radius:8px">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300" style="width:100%; height:180px; object-fit:cover; border-radius:6px">
+                <div>
+                  <h4 style="font-size:1rem; color:var(--azul-puce)">Camiseta Carbón</h4>
+                  <div style="font-weight:800; color:var(--verde-urbano); font-size:1.1rem">$28.00</div>
+                  <div style="margin:0.5rem 0"><span class="chip-size-ui active">M</span> <span class="chip-size-ui">L</span></div>
+                  <button class="u-btn-primary" style="width:100%; font-size:0.75rem">Añadir Bolsa</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (390px)</span><span class="device-dim-pill">1 Col Apilada</span></div>
+            <div class="frame-mobile" style="padding:0.75rem">
+              <div style="background:#fff; padding:0.75rem; border-radius:8px">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300" style="width:100%; height:180px; object-fit:cover; border-radius:6px">
+                <h4 style="font-size:0.95rem; margin-top:0.4rem">Camiseta Oversize Carbón</h4>
+                <div style="font-size:1.15rem; font-weight:800; color:var(--verde-urbano)">$28.00</div>
+                <div style="margin:0.4rem 0"><span class="chip-size-ui">S</span> <span class="chip-size-ui active">M</span> <span class="chip-size-ui">L</span></div>
+                <button class="u-btn-primary" style="width:100%; height:44px">Añadir a la Bolsa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-4-car">
+        <div class="interface-header-banner">
+          <h2><span>🛍️</span> 4. Interfaz Bolsa de Compras Completa</h2>
+          <div class="devices-badge-info">PC (1.8fr 1.2fr) | Tablet (Split) | Móvil (Vertical)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (1440px)</span><span class="device-dim-pill">Tabla + Resumen</span></div>
+            <div class="frame-pc" style="padding:1.25rem">
+              <div style="display:grid; grid-template-columns:1.8fr 1.2fr; gap:1.25rem">
+                <div style="background:#fff; padding:1rem; border-radius:8px; font-size:0.82rem">
+                  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--borde); padding-bottom:0.5rem">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=100" style="width:45px; height:45px; object-fit:cover; border-radius:4px">
+                    <span style="flex:1; margin-left:0.5rem">Camiseta Carbón (M)</span>
+                    <strong style="margin-right:1rem">1x $28.00</strong>
+                    <span style="color:var(--error); cursor:pointer">✕</span>
+                  </div>
+                </div>
+                <div style="background:#fff; padding:1rem; border-radius:8px; font-size:0.82rem">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem"><span>Subtotal:</span><strong>$28.00</strong></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; color:var(--verde-urbano)"><span>Descuento (15%):</span><strong>-$4.20</strong></div>
+                  <div style="display:flex; justify-content:space-between; border-top:1px solid var(--borde); padding-top:0.4rem; font-weight:800; font-size:1rem; color:var(--azul-puce)"><span>Total:</span><span>$23.80</span></div>
+                  <button class="u-btn-primary" style="width:100%; margin-top:0.75rem">Continuar al Checkout →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (768px)</span><span class="device-dim-pill">Split</span></div>
+            <div class="frame-tablet" style="padding:0.75rem">
+              <div style="background:#fff; padding:0.75rem; border-radius:8px; font-size:0.8rem">
+                <div style="display:flex; justify-content:space-between"><span>Camiseta Carbón (M)</span><strong>$28.00</strong></div>
+                <div style="font-weight:800; margin-top:0.5rem; color:var(--azul-puce)">Total: $28.00</div>
+                <button class="u-btn-primary" style="width:100%; margin-top:0.5rem">Checkout</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (390px)</span><span class="device-dim-pill">1 Col</span></div>
+            <div class="frame-mobile" style="padding:0.75rem">
+              <div style="background:#fff; padding:0.75rem; border-radius:8px; font-size:0.8rem">
+                <div>Camiseta Carbón (M)</div>
+                <strong style="color:var(--azul-puce); font-size:1rem">$28.00</strong>
+                <button class="u-btn-primary" style="width:100%; margin-top:0.5rem; height:44px">Pagar $28.00</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-5-dra">
+        <div class="interface-header-banner">
+          <h2><span>📂</span> 5. Interfaz Cesta Desplegable (Slide-over Drawer)</h2>
+          <div class="devices-badge-info">PC (Slide-Over 380px) | Tablet (Side Drawer) | Móvil (Full-Width Drawer)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (Slide-over Drawer 380px)</span></div>
+            <div class="frame-pc" style="padding:1rem; display:flex; justify-content:flex-end">
+              <div style="width:340px; background:#fff; padding:1.25rem; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.15)">
+                <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--borde); padding-bottom:0.5rem; margin-bottom:0.75rem"><strong style="color:var(--azul-puce)">Tu Bolsa</strong><span>&times;</span></div>
+                <div style="font-size:0.8rem; margin-bottom:1rem">1x Camiseta Carbón (M) - <strong>$28.00</strong></div>
+                <button class="u-btn-primary" style="width:100%; margin-bottom:0.4rem">Tramitar Compra Rápida</button>
+                <button class="u-btn-outline" style="width:100%">Ver Carrito Completo</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (Side Drawer)</span></div>
+            <div class="frame-tablet" style="padding:0.75rem; display:flex; justify-content:flex-end">
+              <div style="width:280px; background:#fff; padding:1rem; border-radius:8px">
+                <strong style="color:var(--azul-puce); font-size:0.9rem">Bolsa Rápida</strong>
+                <p style="font-size:0.78rem; margin:0.4rem 0">Subtotal: <strong>$28.00</strong></p>
+                <button class="u-btn-primary" style="width:100%; font-size:0.75rem">Checkout</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (Full-Width Bottom Sheet)</span></div>
+            <div class="frame-mobile" style="padding:1rem; background:#fff">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.75rem"><strong style="color:var(--azul-puce)">Tu Bolsa</strong><span>&times;</span></div>
+              <p style="font-size:0.8rem; margin-bottom:1rem">Subtotal: <strong>$28.00</strong></p>
+              <button class="u-btn-primary" style="width:100%; height:44px">Tramitar Pedido</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-6-chk">
+        <div class="interface-header-banner">
+          <h2><span>💳</span> 6. Interfaz Checkout & Fletes Provinciales</h2>
+          <div class="devices-badge-info">PC (2 Cols Formulario) | Tablet (2 Cols) | Móvil (1 Col Flujo)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (1440px)</span><span class="device-dim-pill">Formulario + Liquidación</span></div>
+            <div class="frame-pc" style="padding:1.25rem">
+              <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:1.25rem; background:#fff; padding:1.25rem; border-radius:8px">
+                <div>
+                  <label style="font-size:0.75rem; font-weight:700">Nombres *</label>
+                  <input type="text" value="Mateo Andrade" style="width:100%; padding:0.4rem; margin-bottom:0.4rem; border:1px solid var(--borde)">
+                  <label style="font-size:0.75rem; font-weight:700">Cédula (10 dígitos) *</label>
+                  <input type="text" value="1712345678" style="width:100%; padding:0.4rem; margin-bottom:0.4rem; border:1px solid var(--borde)">
+                  <label style="font-size:0.75rem; font-weight:700">Provincia *</label>
+                  <select style="width:100%; padding:0.4rem; border:1px solid var(--borde)"><option>Pichincha (Quito) - $3.50</option></select>
+                </div>
+                <div>
+                  <strong>Resumen de Liquidación</strong>
+                  <div style="font-size:0.8rem; margin:0.5rem 0">Prendas: $28.00<br>Envío: $3.50<br><strong style="font-size:1rem; color:var(--azul-puce)">Total: $31.50</strong></div>
+                  <button class="u-btn-secondary" style="width:100%">Confirmar Compra</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (768px)</span></div>
+            <div class="frame-tablet" style="padding:0.75rem">
+              <div style="background:#fff; padding:0.75rem; border-radius:8px; font-size:0.78rem">
+                <strong>Datos de Envío</strong>
+                <input type="text" value="Mateo Andrade" style="width:100%; padding:0.35rem; margin:0.3rem 0; border:1px solid var(--borde)">
+                <div>Flete Pichincha: $3.50 | <strong>Total: $31.50</strong></div>
+                <button class="u-btn-secondary" style="width:100%; margin-top:0.4rem">Confirmar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (390px)</span></div>
+            <div class="frame-mobile" style="padding:0.75rem">
+              <div style="background:#fff; padding:0.75rem; border-radius:8px; font-size:0.78rem">
+                <strong>Datos del Cliente</strong>
+                <input type="text" value="Mateo Andrade" style="width:100%; padding:0.35rem; margin:0.3rem 0; border:1px solid var(--borde)">
+                <input type="text" value="1712345678" style="width:100%; padding:0.35rem; margin-bottom:0.3rem; border:1px solid var(--borde)">
+                <button class="u-btn-secondary" style="width:100%; height:44px">Emitir Pedido ($31.50)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-7-trk">
+        <div class="interface-header-banner">
+          <h2><span>📦</span> 7. Interfaz Comprobante & Stepper de Rastreo</h2>
+          <div class="devices-badge-info">PC (Stepper 4 Fases) | Tablet (Compacto) | Móvil (Vertical)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (1440px)</span><span class="device-dim-pill">Stepper + Resumen</span></div>
+            <div class="frame-pc" style="padding:1.5rem; text-align:center">
+              <div style="font-size:1.5rem; color:var(--verde-urbano); font-weight:800">✓ ¡Pedido Confirmado!</div>
+              <p style="font-size:0.85rem; color:var(--texto-secundario)">Código: <strong>AK-8492</strong> | Cliente: Mateo Andrade</p>
+              <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; margin:1.25rem 0; font-size:0.75rem">
+                <div style="font-weight:700; color:var(--verde-urbano)">1. Recibido ✓</div>
+                <div style="font-weight:700; color:var(--azul-puce)">2. Preparación</div>
+                <div style="color:#94A3B8">3. En Tránsito</div>
+                <div style="color:#94A3B8">4. Entregado</div>
+              </div>
+              <div style="background:#fff; border:1px solid var(--borde); padding:0.75rem; border-radius:6px; font-size:0.85rem; max-width:400px; margin:0 auto 1rem">
+                Total Pagado: <strong style="color:var(--azul-puce)">$31.50</strong>
+              </div>
+              <button class="u-btn-primary">🖨️ Imprimir Comprobante</button>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (768px)</span></div>
+            <div class="frame-tablet" style="padding:1rem; text-align:center">
+              <div style="font-size:1.2rem; color:var(--verde-urbano); font-weight:800">✓ Orden Registrada</div>
+              <strong style="color:var(--azul-puce)">AK-8492</strong>
+              <div style="font-size:0.8rem; margin:0.5rem 0">Estado: <strong>En Preparación (Quito)</strong></div>
+              <button class="u-btn-primary" style="font-size:0.75rem">Imprimir</button>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (390px)</span></div>
+            <div class="frame-mobile" style="padding:1rem; text-align:center; background:#fff">
+              <div style="font-size:1.2rem; color:var(--verde-urbano); font-weight:800">✓ Éxito</div>
+              <strong style="color:var(--azul-puce)">AK-8492</strong>
+              <div style="font-size:0.8rem; margin:0.5rem 0">Total: <strong>$31.50</strong></div>
+              <button class="u-btn-primary" style="width:100%">Ver Despacho</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-8-adm">
+        <div class="interface-header-banner">
+          <h2><span>📊</span> 8. Interfaz Panel Administrativo (CRUD Stock)</h2>
+          <div class="devices-badge-info">PC (Dashboard Completo) | Tablet (Cuadrícula 2x2) | Móvil (Cards)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (1440px)</span><span class="device-dim-pill">KPIs + Tabla CRUD</span></div>
+            <div class="frame-pc" style="padding:1.25rem">
+              <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; margin-bottom:0.85rem">
+                <div style="background:#fff; padding:0.6rem; border-radius:6px; font-size:0.75rem">Modelos: <strong>8</strong></div>
+                <div style="background:#fff; padding:0.6rem; border-radius:6px; font-size:0.75rem">Stock: <strong>195 u.</strong></div>
+                <div style="background:#fff; padding:0.6rem; border-radius:6px; font-size:0.75rem">Alertas: <strong style="color:var(--alerta)">2</strong></div>
+                <div style="background:#fff; padding:0.6rem; border-radius:6px; font-size:0.75rem">Ventas: <strong>$540</strong></div>
+              </div>
+              <div style="background:#fff; border:1px solid var(--borde); border-radius:6px; font-size:0.78rem">
+                <div style="padding:0.4rem 0.75rem; background:var(--fondo-pagina); font-weight:700; color:var(--azul-puce); display:flex; justify-content:space-between">
+                  <span>SKU / Prenda</span><span>Stock</span><span>Acción</span>
+                </div>
+                <div style="padding:0.4rem 0.75rem; display:flex; justify-content:space-between; border-top:1px solid var(--borde)">
+                  <span>AK-TSH-01 Camiseta Carbón</span><span>35 u.</span><span style="color:var(--error); font-weight:700">Dar de Baja</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (768px)</span></div>
+            <div class="frame-tablet" style="padding:0.75rem">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:0.5rem; font-size:0.75rem">
+                <div style="background:#fff; padding:0.5rem; border-radius:4px">Modelos: <strong>8</strong></div>
+                <div style="background:#fff; padding:0.5rem; border-radius:4px">Stock: <strong>195 u.</strong></div>
+              </div>
+              <button class="u-btn-primary" style="width:100%; font-size:0.75rem">+ Nueva Prenda</button>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (390px)</span></div>
+            <div class="frame-mobile" style="padding:0.75rem; background:#fff; font-size:0.8rem">
+              <strong>Admin Akepa</strong>
+              <div style="margin:0.4rem 0">Stock Bodega: <strong>195 u.</strong></div>
+              <button class="u-btn-primary" style="width:100%; font-size:0.75rem">+ Registrar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-9-sop">
+        <div class="interface-header-banner">
+          <h2><span>📏</span> 9. Interfaz Guía de Tallas & Calculadora</h2>
+          <div class="devices-badge-info">PC | Tablet | Móvil</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (1440px)</span></div>
+            <div class="frame-pc" style="padding:1.25rem">
+              <div style="background:#fff; padding:1rem; border-radius:8px; font-size:0.82rem">
+                <strong style="color:var(--azul-puce)">Calculadora Antropométrica</strong>
+                <p style="color:var(--texto-secundario); margin:0.3rem 0">175 cm + 70 kg ➔ <strong style="color:var(--azul-puce)">Talla M (Oversize)</strong></p>
+                <div style="margin-top:0.6rem">Medidas M: Pecho 59cm | Largo 75cm | Manga 24cm</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (768px)</span></div>
+            <div class="frame-tablet" style="padding:0.75rem">
+              <div style="background:#fff; padding:0.75rem; border-radius:6px; font-size:0.78rem">
+                <strong>Guía de Tallas</strong>
+                <div>Talla sugerida: <strong>M (Oversize)</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (390px)</span></div>
+            <div class="frame-mobile" style="padding:0.75rem; background:#fff; font-size:0.78rem">
+              <strong>Calculadora Tallas</strong>
+              <div style="margin:0.3rem 0">Sugerencia: <strong>Talla M</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-10-mod">
+        <div class="interface-header-banner">
+          <h2><span>🪟</span> 10. Interfaz Modal Guía de Medidas (ARIA Dialog)</h2>
+          <div class="devices-badge-info">PC (Modal Centrado) | Tablet (Centrado) | Móvil (Bottom Sheet)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (Modal Centrado)</span></div>
+            <div class="frame-pc" style="padding:2rem; background:rgba(7,59,112,0.45)">
+              <div style="background:#fff; padding:1.25rem; border-radius:8px; max-width:380px; margin:0 auto; font-size:0.8rem">
+                <h4 style="color:var(--azul-puce)">Tabla de Medidas (cm)</h4>
+                <div style="margin:0.5rem 0">S: 56cm | M: 59cm | L: 62cm | XL: 65cm</div>
+                <button class="u-btn-primary" style="width:100%">Entendido</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (Modal)</span></div>
+            <div class="frame-tablet" style="padding:1.5rem; background:rgba(7,59,112,0.45)">
+              <div style="background:#fff; padding:1rem; border-radius:8px; font-size:0.78rem">
+                <strong style="color:var(--azul-puce)">Medidas</strong>
+                <div style="margin:0.4rem 0">M: Pecho 59cm | Largo 75cm</div>
+                <button class="u-btn-primary" style="width:100%">Cerrar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (Bottom Sheet)</span></div>
+            <div class="frame-mobile" style="padding:1rem; background:#fff; border-radius:24px 24px 0 0">
+              <strong style="color:var(--azul-puce)">Medidas (cm)</strong>
+              <div style="font-size:0.75rem; margin:0.4rem 0">S: 56 | M: 59 | L: 62</div>
+              <button class="u-btn-primary" style="width:100%; height:40px">Listo</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interface-matrix-block" id="sec-11-nav">
+        <div class="interface-header-banner">
+          <h2><span>📱</span> 11. Interfaz Navegación y Menú Lateral Móvil</h2>
+          <div class="devices-badge-info">PC (Navbar Horizontal) | Tablet (Condensada) | Móvil (Drawer Táctil 390px)</div>
+        </div>
+        <div class="devices-row">
+
+          <div class="device-shell shell-pc">
+            <div class="device-shell-title"><span>💻 PC (Navbar Persistente)</span></div>
+            <div class="frame-pc" style="padding:0.75rem 1.5rem; background:#fff">
+              <div style="display:flex; justify-content:space-between; align-items:center">
+                <div class="u-logo">AKEPA.</div>
+                <div style="display:flex; gap:1rem; font-size:0.85rem; font-weight:700"><span style="color:var(--azul-puce)">Inicio</span><span>Catálogo</span><span>Guía de Tallas</span><span>Rastreo</span></div>
+                <button class="u-btn-primary">Bolsa (0)</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-tablet">
+            <div class="device-shell-title"><span>📱 Tablet (Navbar)</span></div>
+            <div class="frame-tablet" style="padding:0.6rem 1rem; background:#fff">
+              <div style="display:flex; justify-content:space-between; align-items:center">
+                <div class="u-logo" style="font-size:1.1rem">AKEPA.</div>
+                <div style="display:flex; gap:0.6rem; font-size:0.78rem; font-weight:700"><span style="color:var(--azul-puce)">Inicio</span><span>Catálogo</span><span>Tallas</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-shell shell-mobile">
+            <div class="device-shell-title"><span>📲 Móvil (Drawer Táctil Completo)</span></div>
+            <div class="frame-mobile" style="padding:1.25rem; background:#fff">
+              <div class="u-logo" style="margin-bottom:1rem">AKEPA.</div>
+              <div style="display:flex; flex-direction:column; gap:0.5rem; font-weight:700; font-size:0.85rem">
+                <div style="background:var(--azul-claro); color:var(--azul-puce); padding:0.5rem; border-radius:4px">🏠 Inicio</div>
+                <div style="padding:0.5rem">👕 Catálogo</div>
+                <div style="padding:0.5rem">📏 Guía de Tallas</div>
+                <div style="padding:0.5rem">📦 Rastrear Pedido</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="figma-sidebar-right">
+      <div class="sidebar-header"><span>Figma Inspector</span></div>
+      <div class="inspect-card">
+        <h4>Resoluciones Cubiertas</h4>
+        <div class="prop-row"><span>💻 PC:</span><strong>1440 × 1024 (12 cols)</strong></div>
+        <div class="prop-row"><span>📱 Tablet:</span><strong>768 × 1024 (8 cols)</strong></div>
+        <div class="prop-row"><span>📲 Móvil:</span><strong>390 × 844 (4 cols)</strong></div>
+      </div>
+      <div class="prop-card">
+        <h4>Tokens Oficiales</h4>
+        <div class="prop-item"><span>Primario:</span><strong>#073B70</strong></div>
+        <div class="prop-item"><span>Secundario:</span><strong>#006455</strong></div>
+        <div class="prop-item"><span>Fondo:</span><strong>#F5F8FC</strong></div>
+      </div>
+      <div class="inspect-card">
+        <h4>Cumplimiento RDA 3</h4>
+        <p style="font-size:0.75rem; color:var(--figma-text-muted); line-height:1.4">
+          33 Artboards completos (11 interfaces × 3 dispositivos).
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="js/figma.js"></script>
+</body>
+</html>

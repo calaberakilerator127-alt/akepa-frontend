@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\graphicspath{{inFiles/Figures/}}
+\definecolor{azulpuce}{RGB}{7,59,112}
+\definecolor{azulclaro}{RGB}{238,245,251}
+\definecolor{verdecode}{RGB}{0,100,85}
+\definecolor{fondo}{RGB}{245,248,252}
+
+\titleformat{\section}{\normalfont\Large\bfseries\color{azulpuce}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{azulpuce}}{\thesubsection}{1em}{}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\hypersetup{colorlinks=true, urlcolor=azulpuce, linkcolor=azulpuce}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Grillas en diseño web responsive}
+\rhead{Oliver Romo - NRC 1243}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{azulpuce}\leaders\hrule height \headrulewidth\hfill}}
+\lstset{language=CSS, basicstyle=\ttfamily\small, keywordstyle=\color{azulpuce}\bfseries, commentstyle=\color{verdecode}, backgroundcolor=\color{fondo}, frame=single, rulecolor=\color{azulpuce}, breaklines=true, columns=fullflexible, showstringspaces=false}
+
+\begin{document}
+
+\begin{minipage}{0.45\textwidth}
+    \includegraphics[width=0.323\textwidth]{logoPUCE.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \raggedleft
+    \includegraphics[width=\textwidth]{logoPUCETEC.jpg}
+\end{minipage}
+
+\vspace{0.5cm}
+\begin{center}
+    \textbf{PONTIFICIA UNIVERSIDAD CATÓLICA DEL ECUADOR}\\[0.2cm]
+    \textbf{UNIDAD ACADÉMICA DE FORMACIÓN TÉCNICA Y TECNOLÓGICA DE LA PONTIFICIA UNIVERSIDAD CATÓLICA DEL ECUADOR}\\[0.2cm]
+    \textbf{TECNOLOGÍA SUPERIOR UNIVERSITARIA EN DESARROLLO DE SOFTWARE}
+\end{center}
+
+\vspace{0.35cm}\hrule\vspace{0.35cm}
+\noindent\textbf{PERÍODO ACADÉMICO:} No especificado\\[0.2cm]
+\noindent\textbf{ASIGNATURA:} No especificada \hfill \textbf{NRC:} 1243\\[0.2cm]
+\noindent\textbf{TIPO DE INSTRUMENTO:} Informe de consulta\\[0.2cm]
+\noindent\textbf{FECHA:} 19 de agosto de 2026\\[0.2cm]
+\noindent\textbf{ALUMNO:} Oliver Romo
+\vspace{0.35cm}\hrule\vspace{0.6cm}
+
+\section*{TEMA}
+Uso de grillas para adaptar pantallas en diseño web responsive mediante CSS Grid.
+
+\section*{OBJETIVOS}
+\begin{itemize}
+  \item Describir las columnas, filas, separaciones y unidades relativas de una grilla CSS.
+  \item Aplicar una grilla flexible y media queries para cambiar la distribución de una interfaz según el ancho disponible.
+  \item Verificar, mediante capturas, la reorganización de una misma interfaz en escritorio, tableta y móvil.
+\end{itemize}
+
+\section*{MARCO TEÓRICO}
+CSS Grid organiza los hijos directos de un contenedor en una cuadrícula bidimensional de líneas horizontales y verticales. Al declarar \texttt{display: grid}, el elemento padre se convierte en contenedor de grilla; sus hijos pasan a ser elementos de la grilla. Las líneas delimitan columnas y filas, y la intersección de una columna con una fila forma una celda \cite{mdn-grid-concepts}.
+
+Las propiedades \texttt{grid-template-columns} y \texttt{grid-template-rows} definen las pistas. La abreviación \texttt{repeat(3, 1fr)} crea tres columnas. La unidad \texttt{fr} reparte el espacio libre entre las pistas; por ello \texttt{2fr 1fr} asigna a la primera el doble de espacio libre que a la segunda \cite{mdn-grid-concepts}.
+
+\section*{DESARROLLO}
+\subsection*{Propiedades y características principales}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.25\textwidth}|>{\raggedright\arraybackslash}p{0.25\textwidth}|X|}
+\hline
+\rowcolor{azulpuce}\color{white}\textbf{Elemento} & \color{white}\textbf{Propiedad CSS} & \color{white}\textbf{Resultado inmediato}\\ \hline
+Contenedor & \texttt{display: grid} & Sus hijos directos se colocan en celdas de una grilla.\\ \hline
+Columnas & \texttt{grid-template-columns} & Define el número y ancho de las pistas verticales.\\ \hline
+Filas & \texttt{grid-template-rows} o \texttt{grid-auto-rows} & Define o genera pistas horizontales para el contenido.\\ \hline
+Espacios & \texttt{gap}, \texttt{row-gap}, \texttt{column-gap} & Deja separación entre filas y columnas sin agregar márgenes a cada elemento \cite{mdn-grid-concepts}.\\ \hline
+Tamaños relativos & \texttt{fr}, \texttt{minmax()} & Reparte el ancho o fija límites mínimos y máximos para una pista.\\ \hline
+Distribución & \texttt{justify-content}, \texttt{align-content}, \texttt{place-content} & Ubica la grilla dentro del contenedor cuando queda espacio libre.\\ \hline
+Posición de un hijo & \texttt{grid-column}, \texttt{grid-row}, \texttt{grid-area} & Hace que el elemento ocupe líneas, celdas o un área nombrada.\\ \hline
+\end{tabularx}
+
+\subsection*{Grilla flexible}
+El siguiente bloque usa \texttt{auto-fit} para calcular cuántas columnas de al menos 180 px caben en el contenedor. Cuando el ancho disminuye y ya no cabe otra columna, una tarjeta pasa a la fila siguiente. El \texttt{gap} conserva el espacio entre tarjetas.
+
+\begin{lstlisting}
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.tarjeta { padding: 1rem; border: 1px solid #c7d9eb; }
+\end{lstlisting}
+
+\texttt{minmax(180px, 1fr)} evita que una columna sea menor de 180 px y permite que use una fracción del espacio libre. Este patrón permite que el número de columnas cambie sin una media query específica \cite{mdn-grid-layout}.
+
+\subsection*{Puntos de quiebre y media queries}
+Un breakpoint es el ancho en el que se aplica una regla de diseño distinta. Una media query contiene una condición; las declaraciones internas se aplican si el viewport cumple esa condición \cite{mdn-responsive,mdn-media}.
+
+\begin{lstlisting}
+/* Base: movil */
+.app {
+  display: grid;
+  gap: 1rem;
+  grid-template-areas: "header" "nav" "main" "aside" "footer";
+  grid-template-columns: 1fr;
+}
+
+/* Tableta: dos columnas */
+@media (min-width: 48rem) {
+  .app {
+    grid-template-areas: "header header" "nav main" "aside main" "footer footer";
+    grid-template-columns: minmax(10rem, .8fr) minmax(0, 2.2fr);
+  }
+}
+
+/* Escritorio: tres columnas */
+@media (min-width: 70rem) {
+  .app {
+    grid-template-areas: "header header header" "nav main aside" "footer footer footer";
+    grid-template-columns: minmax(11rem, .8fr) minmax(0, 2.4fr) minmax(13rem, .9fr);
+  }
+}
+\end{lstlisting}
+
+En la regla base, las cinco áreas quedan en una columna. En el primer bloque \texttt{@media}, la condición \texttt{min-width: 48rem} activa dos columnas. En el segundo bloque, la condición \texttt{min-width: 70rem} activa tres columnas y coloca \texttt{aside} a la derecha de \texttt{main}.
+
+El documento HTML debe incluir \texttt{<meta name="viewport" content="width=device-width, initial-scale=1">}; este elemento permite que los navegadores móviles usen el ancho del dispositivo al evaluar las media queries \cite{mdn-responsive}.
+
+\clearpage
+\section*{EVIDENCIAS DE ADAPTACIÓN}
+Las tres capturas usan el mismo HTML y CSS. Se modificó únicamente el ancho del viewport. Las áreas \texttt{nav}, \texttt{main} y \texttt{aside} aparecen en una distribución distinta según la regla activa.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{escritorio.png}
+\caption{Escritorio (1280 px): navegación, contenido principal y panel lateral en tres columnas.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.76\textwidth]{tableta.png}
+\caption{Tableta (768 px): navegación y panel lateral en la primera columna; contenido principal a la derecha.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{movil.png}
+\caption{Móvil (500 px): áreas apiladas en una columna; las tarjetas se distribuyen según su mínimo de 150 px.}
+\end{figure}
+
+\section*{CONCLUSIONES}
+\begin{itemize}
+  \item Las columnas, filas y \texttt{gap} del contenedor permiten separar los elementos visibles sin márgenes individuales entre cada celda.
+  \item Las pistas con \texttt{fr}, \texttt{minmax()} y \texttt{auto-fit} cambian su ancho o número de columnas conforme varía el espacio disponible.
+  \item Las áreas declaradas en cada media query permiten que \texttt{nav}, \texttt{main} y \texttt{aside} cambien de posición en el mismo HTML.
+\end{itemize}
+
+\section*{RECOMENDACIONES}
+\begin{itemize}
+  \item Crear primero una estructura legible de una columna y añadir columnas donde el contenido ya disponga de espacio.
+  \item Probar anchos intermedios, no solo los tres anchos de las capturas, para detectar texto comprimido, botones pequeños u overflow.
+  \item Usar \texttt{minmax(0, 1fr)} para una columna que puede contener elementos largos y evitar desbordamiento horizontal.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{mdn-grid-concepts} MDN Web Docs, ``Basic concepts of grid layout,'' Mozilla. [En línea]. Disponible: \url{https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Basic_concepts}. [Accedido: 19-ago-2026].
+\bibitem{mdn-grid-layout} MDN Web Docs, ``CSS grid layout,'' Mozilla. [En línea]. Disponible: \url{https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout}. [Accedido: 19-ago-2026].
+\bibitem{mdn-responsive} MDN Web Docs, ``Responsive web design,'' Mozilla. [En línea]. Disponible: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design}. [Accedido: 19-ago-2026].
+\bibitem{mdn-media} MDN Web Docs, ``Media query fundamentals,'' Mozilla. [En línea]. Disponible: \url{https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Media_queries}. [Accedido: 19-ago-2026].
+\bibitem{w3c-grid} CSS Working Group, ``CSS Grid Layout Module Level 2.'' [En línea]. Disponible: \url{https://www.w3.org/TR/css-grid-2/}. [Accedido: 19-ago-2026].
+\end{thebibliography}
+
+\end{document}
